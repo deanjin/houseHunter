@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <mapper namespace="mapper.dailyDealInfoMapper">
+            <resultMap id="dailyDealInfo" type="net.dean.object.DailyDealInfo">
+                <id column="name" property="name" javaType="java.lang.String"/>
+                <id column="district" property="district" javaType="java.lang.String"/>
+                <id column="district_part" property="districtPart" javaType="java.lang.String"/>
+                <id column="deal_number" property="dealNumber" javaType="java.lang.Integer"/>
+                <id column="booking_number" property="bookingNumber" javaType="java.lang.Integer"/>
+                <id column="deal_area" property="dealArea" javaType="java.lang.Double"/>
+                <id column="deal_avg_price" property="dealAvgPrice" javaType="java.lang.Double"/>
+                <id column="parse_day" property="parseDay" javaType="java.lang.Integer"/>
+                <id column="parse_hour" property="parseHour" javaType="java.lang.Integer"/>
+            </resultMap>
+    
+            <resultMap id="dailyBriefInfo" type="net.dean.object.DailyBriefInfo">
+                <id column="id" property="id" javaType="java.lang.Integer"/>
+                <id column="district" property="district" javaType="java.lang.String"/>
+                <id column="deal_number" property="dealNumber" javaType="java.lang.Integer"/>
+                <id column="booking_number" property="bookingNumber" javaType="java.lang.Integer"/>
+                <id column="recent_number" property="recentNumber" javaType="java.lang.Integer"/>
+                <id column="parse_day" property="parseDay" javaType="java.lang.Integer"/>
+                <id column="parse_hour" property="parseHour" javaType="java.lang.Integer"/>
+            </resultMap>
+
+
+            <insert id="insertDailyDealInfo" parameterType="DailyDealInfo">
+              INSERT INTO daily_deal_info(`name`,district,district_part,deal_number,booking_number,deal_area,deal_avg_price,parse_day,parse_hour)
+              VALUES(#{name},#{district},#{districtPart},#{dealNumber},#{bookingNumber},#{dealArea},#{dealAvgPrice},#{parseDay},#{parseHour})
+            </insert>
+            <select id="getDailyDealInfoByDate" resultMap="dailyDealInfo" parameterType="java.lang.Integer">
+                SELECT * FROM daily_deal_info WHERE
+                parse_day=#{value}
+                AND
+                parse_hour IN ( (SELECT MAX(parse_hour) FROM daily_deal_info WHERE parse_day=#{value}))
+            </select>
+
+            <insert id="insertDailyBriefInfo" parameterType="DailyBriefInfo">
+                INSERT INTO daily_brief_info(district,deal_number,booking_number,recent_number,parse_day,parse_hour)
+                VALUES(#{district},#{dealNumber},#{bookingNumber},#{recentNumber},#{parseDay},#{parseHour})
+            </insert>
+        </mapper>

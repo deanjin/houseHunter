@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <mapper namespace="mapper.houseInfoMapper">
+            <resultMap id="houseInfo" type="net.dean.object.HouseInfo">
+                <id column="id" property="id" javaType="java.lang.Integer"/>
+                <id column="district_name" property="districtName" javaType="java.lang.String"/>
+                <id column="district_code" property="districtCode" javaType="java.lang.String"/>
+                <id column="department_name" property="departmentName" javaType="java.lang.String"/>
+                <id column="sell_credit" property="sellCredit" javaType="java.lang.String"/>
+                <id column="building_number" property="buildingNumber" javaType="java.lang.String"/>
+                <id column="floor" property="floor" javaType="java.lang.Double"/>
+                <id column="door_number" property="doorNumber" javaType="java.lang.String"/>
+                <id column="origin_area" property="originArea" javaType="java.lang.Double"/>
+                <id column="final_area" property="finalArea" javaType="java.lang.Double"/>
+                <id column="area_percent" property="areaPercent" javaType="java.lang.Double"/>
+                <id column="origin_price" property="originPrice" javaType="java.lang.Double"/>
+                <id column="decoration_price" property="decorationPrice" javaType="java.lang.Double"/>
+                <id column="total_price" property="totalPrice" javaType="java.lang.Double"/>
+                <id column="status" property="status" javaType="java.lang.String"/>
+                <id column="deal_price" property="dealPrice" javaType="java.lang.Double"/>
+                <id column="deal_date" property="dealDate" javaType="java.util.Date"/>
+                <id column="deal_percent" property="dealPercent" javaType="java.lang.Double"/>
+                <id column="hash_code" property="hashCode" javaType="java.lang.String"/>
+                <id column="url" property="url" javaType="java.lang.String"/>
+
+                <!--`deal_date` datetime DEFAULT NULL,-->
+                <!--`update_date` datetime DEFAULT CURRENT_TIMESTAMP,-->
+         <!---->
+
+            </resultMap>
+            <insert id="insertHouseInfo" parameterType="HouseInfo">
+              INSERT INTO house_info(department_name,district_name,district_code,sell_credit,building_number,floor,door_number,origin_area,final_area,area_percent,origin_price,decoration_price,status,total_price,deal_price,deal_percent,hash_code,url)
+              VALUES(#{departmentName},#{districtName},#{districtCode},#{sellCredit},#{buildingNumber},#{floor},#{doorNumber},#{originArea},#{finalArea},#{areaPercent},#{originPrice},#{decorationPrice},#{status},#{totalPrice},#{dealPrice},#{dealPercent},#{hashCode},#{url})
+            </insert>
+
+            <select id="selectDepartmentForName" parameterType="String" resultMap="houseInfo">
+                SELECT * from house_info where department_name like '${value}%' limit 1
+            </select>
+
+            <select id="selectUnSellHouseForName" parameterType="String" resultMap="houseInfo">
+                SELECT * from house_info where department_name = #{value} and status = '可售'
+            </select>
+
+            <select id="selectSoldHouseForName" parameterType="String" resultMap="houseInfo">
+                SELECT * from house_info where department_name = #{value} and status = '已售'
+            </select>
+
+            <select id="updateHouseDealInfo" parameterType="houseInfo">
+                UPDATE house_info set deal_price=#{dealPrice}, status='已售', deal_date = now() WHERE id=#{id}
+            </select>
+
+            <select id="updateConstraintHouseDealInfo" parameterType="houseInfo">
+                UPDATE house_info set status='限制', update_date=now() WHERE id=#{id}
+            </select>
+
+            <select id="getAllHouseForName" parameterType="String" resultMap="houseInfo">
+                SELECT * from house_info where department_name = #{value}
+            </select>
+
+
+            <select id="updateHouseInfoForName" parameterType="houseInfo">
+                UPDATE house_info set hash_code=#{hashCode} where id = #{id}
+            </select>
+
+</mapper>
+

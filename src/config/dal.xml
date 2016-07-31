@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-config.dtd">
+<configuration>
+
+    <typeAliases>
+        <typeAlias alias="DailyDealInfo" type="net.dean.object.DailyDealInfo"/>
+        <typeAlias alias="HouseInfo" type="net.dean.object.HouseInfo"/>
+        <typeAlias alias="SellCreditInfo" type="net.dean.object.SellCreditInfo"/>
+        <typeAlias alias="dailyBriefInfo" type="net.dean.object.DailyBriefInfo"/>
+    </typeAliases>
+
+    <environments default="environment">
+        <environment id="environment">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver" />
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/house_hunter?characterEncoding=UTF-8" />
+                <property name="username" value="root" />
+                <property name="password" value="root" />
+                <property name="poolMaximumActiveConnections" value="50" />
+                <property name="poolMaximumIdleConnections" value="50" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="mapper/dailyDealInfoMapper.xml"/>
+        <mapper resource="mapper/houseInfoMapper.xml"/>
+        <mapper resource="mapper/sellCreditInfoMapper.xml"/>
+    </mappers>
+
+</configuration>
