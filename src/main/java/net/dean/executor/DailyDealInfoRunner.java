@@ -1,11 +1,15 @@
 package net.dean.executor;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import net.dean.common.FileOP;
+import net.dean.setting.URLConfig;
+import net.dean.watcher.parser.SellCreditParser;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
@@ -31,7 +35,7 @@ public class DailyDealInfoRunner {
 
     public void run() {
         DailyDealParser dailyDealParser = new DailyDealParser();
-        ScheduledThreadPoolExecutor scheduledThreadPoolExecutor = new ScheduledThreadPoolExecutor(2);
+        ScheduledThreadPoolExecutor scheduledThreadPoolExecutor = new ScheduledThreadPoolExecutor(10);
 
         scheduledThreadPoolExecutor.scheduleAtFixedRate(() ->
                 {
@@ -39,32 +43,40 @@ public class DailyDealInfoRunner {
 
                     log.info("schedule run daily deal info in time:{}", localTime);
 
-                    if(localTime.getMinute() < 20 || localTime.getMinute() > 25){
+                    if(localTime.getMinute() < 21 || localTime.getMinute() > 25){
                         return;
                     }
 
                     log.info("begin to run daily deal info in time:{}", localTime);
                     try {
                         List<DailyDealInfo> dailyDealInfoList = new ArrayList();
-                        if (localTime.getHour() > 9 && localTime.getHour() <= MappingSet.RECORD_HOUR
-                                ) {
+                        if (localTime.getHour() > 9 && localTime.getHour() <= MappingSet.RECORD_HOUR) {
                             dailyDealInfoList = dailyDealParser.run("http://www.tmsf.com/daily.htm");
                         }
 
+                        //爬取剩余库存
                         List<DailyBriefInfo> dailyBriefInfoList = new ArrayList();
-                        if (localTime.getHour() == MappingSet.RECORD_HOUR){
+                        if (localTime.getHour() == MappingSet.RECORD_HOUR && localTime.getMinute() == 21){
                             dailyBriefInfoList = dailyDealParser.parseDailyBriefInfo();
                         }
 
-                        if(localTime.getHour() == MappingSet.RECORD_HOUR){
+                        //计算房价指数
+                        if(localTime.getHour() == MappingSet.RECORD_HOUR && localTime.getMinute() == 21 ){
                             IndexCalculator indexCalculator = new IndexCalculator();
                             indexCalculator.calHouseIndexer(dailyDealInfoList,dailyBriefInfoList);
                         }
+
+                        //爬取新的预售证
+                        if(localTime.getHour() == MappingSet.RECORD_HOUR && localTime.getMinute() == 21){
+                            SellCreditParser sellCreditParser = new SellCreditParser();
+                            sellCreditParser.run(URLConfig.URL_PREFIX + "/index.jsp");
+                        }
                     } catch (Exception e) {
-                        log.error("failed to parse daily deal info in {}", localTime);
+                        log.error("failed to parse daily deal info in {}, exception:{}", localTime,e);
+                        FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("failed to parse daily deal info in %s, exception:%s",localTime,e));
                     }
                 },
-                1, 60
+                2, 60
                 , TimeUnit.SECONDS
         );
     }

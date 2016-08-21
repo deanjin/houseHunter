@@ -4,6 +4,9 @@ import org.apache.commons.lang3.StringUtils;
 
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+
+import java.time.LocalDate;
+
 /**
  * Created by dean on 16/7/26.
  */
@@ -22,6 +25,7 @@ public class ESOP {
             FileOP.writeFile(file, message);
         } catch (Exception e) {
             log.error("failed to write daily deal info to es for message:{}", message);
+            FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("failed to write daily deal info to es for message:%s",message));
         }
     }
 }

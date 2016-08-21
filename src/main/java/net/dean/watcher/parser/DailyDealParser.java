@@ -1,15 +1,12 @@
 package net.dean.watcher.parser;
 
-import net.dean.common.ESOP;
-import net.dean.common.FileOP;
-import net.dean.common.MappingSet;
+import com.google.common.collect.*;
+import net.dean.common.*;
 import net.dean.dal.DataOP;
 import net.dean.object.*;
 
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.*;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
 import com.google.common.base.Optional;
 import org.apache.commons.lang3.StringUtils;
 import org.htmlparser.Node;
@@ -25,8 +22,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.net.URL;
 import java.time.Clock;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -50,11 +47,25 @@ public class DailyDealParser {
             "星空公寓",
             "万科&middot;新都会1958",
             "东方星城",
-//        "北大资源未名府",
-//        "绿城西子田园牧歌",
+        "北大资源未名府",
+        "绿城西子田园牧歌",
             "云杉郡景中心",
             "国风美域公寓",
-            "九龙仓&middot;珑玺");
+            "绿城九龙仓&middot;柳岸晓风",
+            "九龙仓&middot;珑玺",
+            "水色宜居",
+            "孔雀蓝轩",
+            "学院华庭",
+            "金都艺墅",
+            "滨江&middot;铂金海岸",
+            "卓蓝华庭",
+            "云荷廷",
+            "阳光郡公寓",
+            "万科郡西澜山",
+            "紫蝶苑",
+            "西溪蓝海",
+            "雍荣华庭");
+//            "白马湖和院");
 
     public static void main(String[] args) {
         DailyDealParser dailyDealParser = new DailyDealParser();
@@ -74,101 +85,106 @@ public class DailyDealParser {
      * @throws ParserException
      */
     public List<DailyDealInfo> run(final String url) throws IOException, ParserException {
-
         List<DailyDealInfo> dailyDealInfoList = Lists.newArrayList();
-        Parser parser = new Parser(new URL(url).openConnection());
-        NodeFilter nodeFilter = new HasAttributeFilter("class", "datacenternow");
-        NodeList nodeList = parser.extractAllNodesThatMatch(nodeFilter);
-        if (nodeList.elementAt(0).getChildren().size() < 2) {
-            return Lists.newArrayList();
+        try {
+
+            Parser parser = new Parser(CommonHttpURLConnection.getURLConnection(url));
+            NodeFilter nodeFilter = new HasAttributeFilter("class", "datacenternow");
+            NodeList nodeList = parser.extractAllNodesThatMatch(nodeFilter);
+            if (nodeList.elementAt(0).getChildren().size() < 2) {
+                return Lists.newArrayList();
+            }
+
+            //到1970/01/01 00:00:00的小时数
+            int parseHour = (int) (Clock.systemUTC().millis() / (1000 * 3600));
+
+            //到1970/01/01 00:00:00的天数
+            int parseDay = (int) parseHour / 24;
+
+            List<DailyDealInfo> curHourDailyDealInfoList = dataOP.getDailyDealInfoByHour(parseDay);
+            if (!curHourDailyDealInfoList.isEmpty() && curHourDailyDealInfoList.get(0).getParseHour() == parseHour) {
+                log.info("in hour:{} of day:{}, already parse", parseHour, parseDay);
+                return Collections.EMPTY_LIST;
+            }
+
+            Node node = nodeList.elementAt(0).getChildren().elementAt(3);
+
+            nodeFilter = new TagNameFilter("tr");
+            nodeList = new NodeList();
+            node.collectInto(nodeList, nodeFilter);
+            NodeList dealNodeList;
+            for (int i = 1; i < nodeList.toNodeArray().length - 1; i++) {
+
+                Node tmpNode = nodeList.elementAt(i);
+                if (tmpNode instanceof TableRow && ("#fff9e5").equalsIgnoreCase(((TableRow) tmpNode).getAttribute("bgcolor"))) {
+                    continue;
+                }
+                nodeFilter = new TagNameFilter("td");
+                dealNodeList = new NodeList();
+                tmpNode.collectInto(dealNodeList, nodeFilter);
+
+                int length = dealNodeList.size();
+
+                DailyDealInfo.Builder builder = new DailyDealInfo.Builder();
+                String department_Name = CharMatcher.WHITESPACE.removeFrom(dealNodeList.elementAt(0).toPlainTextString());
+                if (StringUtils.equalsIgnoreCase("楼盘名称", department_Name)) {
+                    continue;
+                }
+                if (length > 0) {
+                    builder.name(department_Name);
+                }
+                if (length > 1) {
+                    builder.district(CharMatcher.WHITESPACE.removeFrom(dealNodeList.elementAt(1).toPlainTextString()));
+                }
+                if (length > 2) {
+                    builder.dealNumber(Integer.parseInt(parseSpan(dealNodeList.elementAt(2))));
+                }
+                if (length > 3) {
+                    builder.bookingNumber(Integer.parseInt(parseSpan(dealNodeList.elementAt(3))));
+                }
+                if (length > 4) {
+                    builder.dealArea(Double.parseDouble(parseSpan(dealNodeList.elementAt(4))));
+                }
+                if (length > 5) {
+                    builder.dealAvgPrice(Double.parseDouble(parseSpan(dealNodeList.elementAt(5))));
+                }
+
+                builder.parseHour(parseHour);
+
+                builder.parseDay(parseDay);
+
+                DailyDealInfo dailyDealInfo = builder.build();
+
+
+                String name = dailyDealInfo.getName().replace("·", "&middot;");
+                //获取区域信息
+                Optional<String> opt = getDistrictByName(name);
+                if (opt.isPresent()) {
+                    dailyDealInfo.setDistrictPart(dailyDealInfo.getDistrict());
+                    dailyDealInfo.setDistrict(opt.get());
+                }
+
+                dailyDealInfoList.add(dailyDealInfo);
+
+                log.info("parse daily deal info:{}", dailyDealInfo.toString());
+            }
+
+            log.info("in hour:{} of day:{}, get total {} daily deal info count", parseHour, parseDay, dailyDealInfoList.size());
+
+            List<DailyDealInfo> tmpDailyDealInfoList = new ArrayList<>();
+
+            dailyDealInfoList.forEach(e -> {
+                try {
+                    tmpDailyDealInfoList.add((DailyDealInfo) e.clone());
+                } catch (Exception e1) {
+                }
+            });
+
+            updateDealInfo(parseHour, parseDay, tmpDailyDealInfoList, curHourDailyDealInfoList);
+        }catch(Exception e){
+            FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),
+                    String.format("%s failed to call daily deal parser:%s", LocalDateTime.now().toString(),e));
         }
-
-        //到1970/01/01 00:00:00的小时数
-        int parseHour = (int) (Clock.systemUTC().millis() / (1000 * 3600));
-
-        //到1970/01/01 00:00:00的天数
-        int parseDay = (int) parseHour / 24;
-
-        List<DailyDealInfo> curHourDailyDealInfoList = dataOP.getDailyDealInfoByHour(parseDay);
-        if (!curHourDailyDealInfoList.isEmpty() && curHourDailyDealInfoList.get(0).getParseHour() == parseHour) {
-            log.info("in hour:{} of day:{}, already parse", parseHour, parseDay);
-            return Collections.EMPTY_LIST;
-        }
-
-        Node node = nodeList.elementAt(0).getChildren().elementAt(3);
-
-        nodeFilter = new TagNameFilter("tr");
-        nodeList = new NodeList();
-        node.collectInto(nodeList, nodeFilter);
-        NodeList dealNodeList;
-        for (int i = 1; i < nodeList.toNodeArray().length - 1; i++) {
-
-            Node tmpNode = nodeList.elementAt(i);
-            if (tmpNode instanceof TableRow && ("#fff9e5").equalsIgnoreCase(((TableRow) tmpNode).getAttribute("bgcolor"))) {
-                continue;
-            }
-            nodeFilter = new TagNameFilter("td");
-            dealNodeList = new NodeList();
-            tmpNode.collectInto(dealNodeList, nodeFilter);
-
-            int length = dealNodeList.size();
-
-            DailyDealInfo.Builder builder = new DailyDealInfo.Builder();
-            String department_Name = CharMatcher.WHITESPACE.removeFrom(dealNodeList.elementAt(0).toPlainTextString());
-            if (StringUtils.equalsIgnoreCase("楼盘名称", department_Name)) {
-                continue;
-            }
-            if (length > 0) {
-                builder.name(department_Name);
-            }
-            if (length > 1) {
-                builder.district(CharMatcher.WHITESPACE.removeFrom(dealNodeList.elementAt(1).toPlainTextString()));
-            }
-            if (length > 2) {
-                builder.dealNumber(Integer.parseInt(parseSpan(dealNodeList.elementAt(2))));
-            }
-            if (length > 3) {
-                builder.bookingNumber(Integer.parseInt(parseSpan(dealNodeList.elementAt(3))));
-            }
-            if (length > 4) {
-                builder.dealArea(Double.parseDouble(parseSpan(dealNodeList.elementAt(4))));
-            }
-            if (length > 5) {
-                builder.dealAvgPrice(Double.parseDouble(parseSpan(dealNodeList.elementAt(5))));
-            }
-
-            builder.parseHour(parseHour);
-
-            builder.parseDay(parseDay);
-
-            DailyDealInfo dailyDealInfo = builder.build();
-
-
-            String name = dailyDealInfo.getName().replace("·", "&middot;");
-            //获取区域信息
-            Optional<String> opt = getDistrictByName(name);
-            if (opt.isPresent()) {
-                dailyDealInfo.setDistrictPart(dailyDealInfo.getDistrict());
-                dailyDealInfo.setDistrict(opt.get());
-            }
-
-            dailyDealInfoList.add(dailyDealInfo);
-
-            log.info("parse daily deal info:{}", dailyDealInfo.toString());
-        }
-
-        log.info("in hour:{} of day:{}, get total {} daily deal info count", parseHour, parseDay, dailyDealInfoList.size());
-
-        List<DailyDealInfo> tmpDailyDealInfoList = new ArrayList<>();
-
-        dailyDealInfoList.forEach(e -> {
-            try {
-                tmpDailyDealInfoList.add((DailyDealInfo) e.clone());
-            } catch (Exception e1) {
-            }
-        });
-
-        updateDealInfo(parseHour, parseDay, tmpDailyDealInfoList,curHourDailyDealInfoList);
 
         return dailyDealInfoList;
     }
@@ -231,7 +247,11 @@ public class DailyDealParser {
             name = name.replace("·", "&middot;");
             dailyDealInfo.setName(name);
             if (needParseDepartmentSet.contains(dailyDealInfo.getName())) {
-                findSellHouse(dailyDealInfo);
+                try {
+                    findSellHouse(dailyDealInfo);
+                }catch(Exception e){
+                    log.error("when findSellHouse for {} catch exception:{}",dailyDealInfo.toString(),e);
+                }
             }
         }
 
@@ -290,9 +310,37 @@ public class DailyDealParser {
         double totalPrice = dailyDealInfo.getDealAvgPrice() * dailyDealInfo.getDealArea();
         int dealNumber = dailyDealInfo.getDealNumber();
 
+        boolean isFound = false;
+        //有可能当前小时的统计数落后于实际的这个销售数
+        //将当前小时的所有出售的房子按照实际销售数量做组合排列,选出其中的一组总销售面积满足实际销售面积
+        if(currentSellHouseInfoList.size() > dealNumber){
+
+            List<Integer> numList = new ArrayList<>();
+            for(int i=0;i<currentSellHouseInfoList.size();i++){
+                numList.add(i);
+            }
+
+            try {
+                List<List<Integer>> combinationList = AssistantOP.getCombinationForList(numList, dealNumber);
+                for (List<Integer> list : combinationList) {
+                    double dealArea = list.stream().mapToDouble(e -> currentSellHouseInfoList.get(e).getOriginArea()).sum();
+                    if (dealArea == dailyDealInfo.getDealArea()) {
+                        for (int i = list.size(); i > 0; --i) {
+                            currentSellHouseInfoList.remove(i);
+                        }
+                        isFound = true;
+                        break;
+                    }
+                }
+            }catch(Exception e){
+                FileOP.writeFile("log/daily_error_"+LocalDate.now().toString(),
+                        String.format("failed to updatePrice:%s, exception:%s",dailyDealInfo,e));
+            }
+        }
+
         //如果发现当前该楼盘的成交量与实际上的成交量有问题,那肯定是有次爬取失败导致数据不一致
         //这个时候,将未记录的成交房子置为当前均价
-        if (dealNumber != currentSellHouseInfoList.size()) {
+        if (!isFound && dealNumber != currentSellHouseInfoList.size()) {
             try {
                 currentSellHouseInfoList.stream().forEach(
                         e ->
@@ -374,7 +422,7 @@ public class DailyDealParser {
     public List<DailyBriefInfo> parseDailyBriefInfo() throws IOException, ParserException {
 
 
-        Parser parser = new Parser(new URL("http://www.tmsf.com/index.jsp").openConnection());
+        Parser parser = new Parser(CommonHttpURLConnection.getURLConnection("http://www.tmsf.com/index.jsp"));
         NodeFilter nodeFilter = new HasAttributeFilter("id", "myCont5");
         NodeList nodeList = parser.extractAllNodesThatMatch(nodeFilter);
         if (nodeList.toNodeArray().length == 0) {

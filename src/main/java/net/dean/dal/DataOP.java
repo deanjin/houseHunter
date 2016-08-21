@@ -3,9 +3,11 @@ package net.dean.dal;
 import java.io.File;
 import java.io.InputStream;
 import java.io.Reader;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.dean.common.FileOP;
 import net.dean.object.DailyBriefInfo;
 import net.dean.object.DailyDealInfo;
 import net.dean.object.HouseInfo;
@@ -58,6 +60,7 @@ public class DataOP {
             return true;
         }catch(Exception e){
             log.error("when do insertDailyDealInfo {} catch exception: {}", dailyDealInfo,e);
+            FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("when do insertDailyDealInfo %s catch exception: %s", dailyDealInfo,e));
         }
         return false;
     }
@@ -71,6 +74,7 @@ public class DataOP {
             return true;
         }catch(Exception e){
             log.error("when do insertBriefDealInfo {} catch exception: {}", dailyBriefInfo,e);
+            FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("when do insertBriefDealInfo %s catch exception: %s", dailyBriefInfo,e));
         }
         return false;
     }
@@ -85,6 +89,7 @@ public class DataOP {
             return true;
         }catch(Exception e){
             log.error("when do insertHouseInfo {} catch exception: {}", houseInfo,e);
+            FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("when do insertHouseInfo %s catch exception: %s", houseInfo,e));
         }
         return false;
     }
@@ -99,6 +104,7 @@ public class DataOP {
             return true;
         }catch(Exception e){
             log.error("when do insertSellCreditInfo {} catch exception: {}", sellCreditInfo,e);
+            FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("when do insertSellCreditInfo %s catch exception: %s", sellCreditInfo,e));
         }
         return false;
     }
@@ -112,6 +118,21 @@ public class DataOP {
             return houseInfoList.get(0);
         }catch(Exception e){
             log.error("when do getHouseInfoByDepartmentName {} catch exception: {}", departmentName,e);
+            FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("when do getHouseInfoByDepartmentName %s catch exception: %s",departmentName,e));
+        }
+        return null;
+    }
+
+    public HouseInfo getHouseInfoByDepartmentNameAndSellCredit(SellCreditInfo sellCreditInfo){
+        try {
+            SqlSession session = sessionFactory.openSession();
+            List<HouseInfo> houseInfoList = session.selectList("selectDepartmentForNameAndSellCredit",sellCreditInfo);
+            session.commit();
+            session.close();
+            return houseInfoList.get(0);
+        }catch(Exception e){
+            log.error("when do getHouseInfoByDepartmentName {} catch exception: {}", sellCreditInfo,e);
+            FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("when do getHouseInfoByDepartmentName %s catch exception: %s",sellCreditInfo,e));
         }
         return null;
     }
@@ -125,6 +146,7 @@ public class DataOP {
             return DailyDealInfoList;
         }catch(Exception e){
             log.error("when do getDailyDealInfoByHour {} catch exception: {}", parseDay,e);
+            FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("when do getDailyDealInfoByHour %s catch exception: %s",parseDay,e));
         }
         return null;
     }
@@ -138,6 +160,7 @@ public class DataOP {
             return houseInfoList;
         }catch(Exception e){
             log.error("when do getUnSellHouseByName {} catch exception: {}", name,e);
+            FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("when do getUnSellHouseByName %s catch exception: %s",name,e));
         }
         return null;
     }
@@ -151,6 +174,7 @@ public class DataOP {
             return houseInfoList;
         }catch(Exception e){
             log.error("when do getSoldHouseByName {} catch exception: {}", name,e);
+            FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("when do getSoldHouseByName %s catch exception: %s",name,e));
         }
         return null;
     }
@@ -165,6 +189,7 @@ public class DataOP {
             return true;
         }catch(Exception e){
             log.error("when do updateHouseDealInfo {} catch exception: {}", houseInfo ,e);
+            FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("when do updateHouseDealInfo %s catch exception: %s", houseInfo ,e));
         }
         return false;
     }
@@ -178,6 +203,7 @@ public class DataOP {
             return true;
         }catch(Exception e){
             log.error("when do updateConstraintHouseDealInfo {} catch exception: {}", houseInfo ,e);
+            FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("when do updateConstraintHouseDealInfo %s catch exception: %s", houseInfo ,e));
         }
         return false;
     }
@@ -191,6 +217,7 @@ public class DataOP {
             session.close();
         }catch(Exception e){
             log.error("when do getAllHouseInfoByDepartmentName {} catch exception: {}", departmentName,e);
+            FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(), String.format("when do getAllHouseInfoByDepartmentName %s catch exception: %s",departmentName,e));
         }
         return houseInfoList;
     }
@@ -204,6 +231,7 @@ public class DataOP {
             return true;
         }catch(Exception e){
             log.error("when do updateHouseInfo {} catch exception: {}", houseInfo ,e);
+            FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("when do updateHouseInfo %s catch exception: %s", houseInfo ,e));
         }
         return false;
     }

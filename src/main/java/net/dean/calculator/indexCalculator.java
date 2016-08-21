@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import net.dean.common.ESOP;
+import net.dean.common.FileOP;
 import net.dean.common.MappingSet;
 import net.dean.object.DailyBriefInfo;
 import net.dean.object.DailyDealInfo;
@@ -11,6 +12,7 @@ import net.dean.object.DepartmentInfo;
 import net.dean.watcher.parser.DepartmentParser;
 import org.apache.commons.lang3.StringUtils;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -87,7 +89,7 @@ public class IndexCalculator {
             index = totalPriceSum * 1000 * totalDealCount / totalRemainHouseCount;
         }
 
-        ESOP.writeToES("daily_index_detail_es", String.format("[杭州市][%s]剩余库存:%f,销售均价总和:%f,销售数量:%f,指数:%f",
+        ESOP.writeToES("log/daily_index_detail_es", String.format("[杭州市][%s]剩余库存:%f,销售均价总和:%f,销售数量:%f,指数:%f",
                 LocalDateTime.now().toString(),totalRemainHouseCount,totalPriceSum,totalDealCount,index));
 
         JSONObject jsonObject = new JSONObject();
@@ -135,7 +137,7 @@ public class IndexCalculator {
             index = avgPrice * 1000 * totalDealCount.get() / totalRemainHouseCount.get();
         }
 
-        ESOP.writeToES("daily_index_detail_es", String.format("[主城区][%s]剩余库存:%d,销售均价总和:%.2f,销售数量:%d,指数:%.2f",
+        ESOP.writeToES("log/daily_index_detail_es", String.format("[主城区][%s]剩余库存:%d,销售均价总和:%.2f,销售数量:%d,指数:%.2f",
                 LocalDateTime.now().toString(),totalRemainHouseCount.get(),avgPrice,totalDealCount.get(),index));
 
 
@@ -175,7 +177,7 @@ public class IndexCalculator {
         if(totalRemainHouseCount.get() != 0){
             index = avgPrice * 1000 * totalDealCount.get() / totalRemainHouseCount.get();
         }
-        ESOP.writeToES("daily_index_detail_es", String.format("[%s][%s]剩余库存:%d,销售均价总和:%.2f,销售数量:%d,指数:%.2f",
+        ESOP.writeToES("log/daily_index_detail_es", String.format("[%s][%s]剩余库存:%d,销售均价总和:%.2f,销售数量:%d,指数:%.2f",
                 district,LocalDateTime.now().toString(),totalRemainHouseCount.get(),avgPrice,totalDealCount.get(),index));
 
 
@@ -203,6 +205,8 @@ public class IndexCalculator {
                 }catch(Exception e){
                     totalUnAvailDepartmentCount++;
                     log.error("failed to parse average price for department:{},current number:{}",departmentInfo,totalUnAvailDepartmentCount);
+                    FileOP.writeFile("log/daily_error_"+LocalDate.now().toString(),
+                            String.format("failed to parse average price for department:%s,current number:%s, exception:%s",departmentInfo,totalUnAvailDepartmentCount,e));
                 }
             }
             if(totalAvailDepartmentCount != 0){
@@ -210,6 +214,7 @@ public class IndexCalculator {
             }
         }catch(Exception e){
             log.error("calAvgPrice for district:{} catch exception:{}",districtTable,e);
+            FileOP.writeFile("log/daily_error_"+LocalDate.now().toString(),String.format("calAvgPrice for district:%s catch exception:%s",districtTable,e));
         }
         return 0;
     }

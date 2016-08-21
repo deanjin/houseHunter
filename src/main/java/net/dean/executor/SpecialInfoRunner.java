@@ -25,10 +25,14 @@ public class SpecialInfoRunner {
 
         List<DepartmentInfo> departmentInfoList = new ArrayList<>();
         DepartmentInfo departmentInfo = new DepartmentInfo();
-        departmentInfo.setName("西溪河滨之城");
-        departmentInfo.setDistrictName("西湖区");
-        departmentInfo.setDistrictCode("330108");
-        departmentInfo.setUrl("http://www.tmsf.com/newhouse/property_33_64897079_price.htm");
+//        departmentInfo.setName("西溪河滨之城");
+//        departmentInfo.setDistrictName("西湖");
+//        departmentInfo.setDistrictCode("330106");
+//        departmentInfo.setUrl("http://www.tmsf.com/newhouse/property_33_64897079_price.htm");
+        departmentInfo.setName("天峻公寓");
+        departmentInfo.setDistrictName("余杭");
+        departmentInfo.setDistrictCode("330184");
+        departmentInfo.setUrl("http://www.tmsf.com/newhouse/property_330184_81564505_price.htm");
         departmentInfoList.add(departmentInfo);
 
         specialParser.parseConstraintHouse(departmentInfoList);

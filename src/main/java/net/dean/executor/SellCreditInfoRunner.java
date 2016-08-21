@@ -1,5 +1,6 @@
 package net.dean.executor;
 
+import net.dean.common.FileOP;
 import net.dean.setting.URLConfig;
 import net.dean.watcher.parser.DailyDealParser;
 import net.dean.watcher.parser.SellCreditParser;
@@ -7,6 +8,7 @@ import net.dean.watcher.parser.SellCreditParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -33,7 +35,8 @@ public class SellCreditInfoRunner {
                     try {
                         sellCreditParser.run(URLConfig.URL_PREFIX + "/index.jsp");
                     } catch (Exception e) {
-                        log.error("failed to parse sell credit info in {}", date);
+                        log.error("failed to parse sell credit info in {},exception:{}", date);
+                        FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("failed to parse sell credit info in %s,exception:%s",date,e));
                     }
                 },
                 5, 60 * 60

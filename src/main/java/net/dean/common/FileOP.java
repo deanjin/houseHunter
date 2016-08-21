@@ -27,8 +27,12 @@ public class FileOP {
         charSink.write(object.toString()+"\n");
     }
 
-    public static void writeFile(String fileName, String message) throws IOException{
-        CharSink charSink = Files.asCharSink(new File(fileName), Charsets.UTF_8, FileWriteMode.APPEND);
-        charSink.write(message+"\n");
+    public static void writeFile(String fileName, String message){
+        try {
+            CharSink charSink = Files.asCharSink(new File(fileName), Charsets.UTF_8, FileWriteMode.APPEND);
+            charSink.write(message + "\n");
+        }catch(Exception e){
+
+        }
     }
 }

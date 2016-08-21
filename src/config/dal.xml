@@ -15,7 +15,7 @@
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver" />
                 <property name="url"
-                          value="jdbc:mysql://localhost:3306/house_hunter?characterEncoding=UTF-8" />
+                          value="jdbc:mysql://localhost:3306/house_hunter?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false" />
                 <property name="username" value="root" />
                 <property name="password" value="root" />
                 <property name="poolMaximumActiveConnections" value="50" />

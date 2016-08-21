@@ -1,5 +1,6 @@
 package net.dean.watcher.parser;
 
+import net.dean.common.CommonHttpURLConnection;
 import net.dean.common.MappingSet;
 import net.dean.object.DepartmentInfo;
 import net.dean.object.HouseStateInfo;
@@ -71,13 +72,41 @@ public class DepartmentParser {
 //        runDepartment("星空公寓","http://www.tmsf.com/newhouse/property_330184_254120984_price.htm","余杭","330184","24538",null);
 //        runDepartment("万科&middot;新都会1958","http://www.tmsf.com/newhouse/property_33_232615031_price.htm","下城","330103","42436",null);
 //        runDepartment("东方星城","http://www.tmsf.com/newhouse/property_33_238384144_price.htm","江干","330104","26876",null);
-
+//        runDepartment("绿城九龙仓&middot;柳岸晓风", "http://www.tmsf.com/newhouse/property_33_239218542_price.htm", "滨江", "330108", "41484", null);
+//
 //        runDepartment("北大资源未名府","http://www.tmsf.com/newhouse/property_330184_265972817_price.htm","余杭","330184","17081",null);
 //        runDepartment("绿城西子田园牧歌","http://www.tmsf.com/newhouse/property_33_2582_price.htm","拱墅","330105","18442",null);
-
+//
 //        runDepartment("云杉郡景中心","http://www.tmsf.com/newhouse/property_33_264942875_price.htm","滨江","330108","16677",null);
 
-        runDepartment("九龙仓&middot;珑玺", "http://www.tmsf.com/newhouse/property_33_231599256_price.htm", "拱墅", "330105", "29552", null);
+//        runDepartment("九龙仓&middot;珑玺", "http://www.tmsf.com/newhouse/property_33_231599256_price.htm", "拱墅", "330105", "29552", null);
+//        runDepartment("水色宜居", "http://www.tmsf.com/newhouse/property_33_163840737_price.htm", "拱墅", "330105", "33672", null);
+//        runDepartment("孔雀蓝轩", "http://www.tmsf.com/newhouse/property_33_177105285_price.htm", "拱墅", "330105", "26355", null);
+//        runDepartment("学院华庭", "http://www.tmsf.com/newhouse/property_33_101409102_price.htm", "西湖", "330106", "50365", null);
+//        runDepartment("白马湖和院", "http://www.tmsf.com/newhouse/property_33_115301085_price.htm", "滨江", "330108", "17244", null);
+//        runDepartment("滨江&middot;铂金海岸", "http://www.tmsf.com/newhouse/property_33_272625341_price.htm", "江干", "330104", "25407", null);
+//        runDepartment("西溪银泰商业中心", "http://www.tmsf.com/newhouse/property_33_122036672_price.htm", "西湖", "330106", "0", null);
+//        runDepartment("湖漫雅筑", "http://www.tmsf.com/newhouse/property_33_25749011_price.htm", "滨江", "330108", "0", null);
+//        runDepartment("御溪花苑", "http://www.tmsf.com/newhouse/property_33_49559595_price.htm", "西湖", "330106", "0", null);
+//        runDepartment("玉泉二期&middot;香樟洋房", "http://www.tmsf.com/newhouse/property_33_302207316_price.htm", "西湖", "330106", "0", null);
+
+//        runDepartment("金都艺墅","http://www.tmsf.com/newhouse/property_33_2554_price.htm","之江","330110","21496",null);
+//        runDepartment("运河金麟府","http://www.tmsf.com/newhouse/property_33_240333664_price.htm","拱墅","330105","0",null);
+
+//        runDepartment("卓蓝华庭", "http://www.tmsf.com/newhouse/property_33_164427716_price.htm", "江干", "330104", "12491", null);
+//        runDepartment("运河宸园", "http://www.tmsf.com/newhouse/property_33_49436919_price.htm", "拱墅", "330105", "27433", null);
+
+//        runDepartment("广厦天都城", "http://www.tmsf.com/newhouse/property_330184_20262405_price.htm", "余杭", "330184", "12491", null);
+
+//          runDepartment("云荷廷", "http://www.tmsf.com/newhouse/property_33_61780345_price.htm", "之江", "330110", "28374", null);
+
+//        runDepartment("阳光郡公寓", "http://www.tmsf.com/newhouse/property_33_8911_price.htm", "拱墅", "330105", "19877", null);
+//        runDepartment("紫蝶苑", "http://www.tmsf.com/newhouse/property_33_59170394_price.htm", "西湖", "330106", "23189", null);
+//        runDepartment("万科郡西澜山", "http://www.tmsf.com/newhouse/property_330184_186063736_price.htm", "余杭", "330184", "18219", null);
+
+//        runDepartment("西溪蓝海", "http://www.tmsf.com/newhouse/property_330184_177675733_price.htm", "余杭", "330184", "14792", null);
+        runDepartment("雍荣华庭", "http://www.tmsf.com/newhouse/property_33_226845036_price.htm", "拱墅", "330105", "27560", null);
+
 
     }
 
@@ -155,7 +184,7 @@ public class DepartmentParser {
      * @throws ParserException
      */
     private int parsePageInfo(final String url) throws IOException, ParserException {
-        Parser parser = new Parser(new URL(url).openConnection());
+        Parser parser = new Parser(CommonHttpURLConnection.getURLConnection(url));
 
         NodeFilter nodeFilter = new HasAttributeFilter("class", "pagenumber");
         NodeList nodeList = parser.extractAllNodesThatMatch(nodeFilter);
@@ -196,47 +225,57 @@ public class DepartmentParser {
 
         List<DepartmentInfo> departmentInfoList = Lists.newArrayList();
 
-        Parser parser = new Parser(new URL(url).openConnection());
-        NodeFilter nodeFilter = new HasAttributeFilter("class", "build_txt");
-        NodeList nodeList = parser.extractAllNodesThatMatch(nodeFilter);
-        DepartmentInfo departmentInfo = null;
-        DepartmentInfo.Builder builder = new DepartmentInfo.Builder();
-        for (Node node : nodeList.toNodeArray()) {
+        Parser parser = new Parser(CommonHttpURLConnection.getURLConnection(url));
+
+
+        NodeFilter nodeFilter1 = new HasAttributeFilter("class", "build_des dingwei");
+        NodeList nodeList1 = parser.extractAllNodesThatMatch(nodeFilter1);
+
+        for (Node node1 : nodeList1.toNodeArray()) {
+            NodeList nodeList2 = new NodeList();
+            NodeFilter nodeFilter = new HasAttributeFilter("class", "build_txt line26");
+            node1.collectInto(nodeList2, nodeFilter);
+            DepartmentInfo departmentInfo = null;
+            DepartmentInfo.Builder builder = new DepartmentInfo.Builder();
+
             NodeList tmpNodeList = new NodeList();
 
             //小区名
-            nodeFilter = new HasAttributeFilter("style", "padding-top: 10px;line-height:20px;");
-            node.collectInto(tmpNodeList, nodeFilter);
+            nodeFilter = new HasAttributeFilter("class", "build_word01");
+            nodeList2.elementAt(0).collectInto(tmpNodeList, nodeFilter);
             if (tmpNodeList.size() != 0) {
-                String departmentName = CharMatcher.WHITESPACE.removeFrom(tmpNodeList.elementAt(0).toPlainTextString());
+                String departmentName = CharMatcher.WHITESPACE.removeFrom(tmpNodeList.elementAt(0).getChildren().elementAt(1).toPlainTextString());
                 builder.name(departmentName);
-            }
-
-            //小区均价
-            tmpNodeList = new NodeList();
-
-            nodeFilter = new HasAttributeFilter("class", "build_txt06");
-            node.collectInto(tmpNodeList, nodeFilter);
-            if (tmpNodeList.size() != 0) {
-                String price = parseSpan(tmpNodeList.elementAt(0));
-                builder.averPrice(price);
             }
 
             //小区URL
             tmpNodeList = new NodeList();
 
             nodeFilter = new HasAttributeFilter("class", "build_txt2");
-            node.collectInto(tmpNodeList, nodeFilter);
+            nodeList2.elementAt(0).collectInto(tmpNodeList, nodeFilter);
             if (tmpNodeList.size() != 0) {
                 String departmentUrl = ((LinkTag) tmpNodeList.elementAt(0).getChildren().elementAt(3)).getAttribute("href");
                 builder.url(URLConfig.URL_PREFIX + departmentUrl);
             }
 
+            //小区均价
+            tmpNodeList = new NodeList();
+
+            nodeFilter = new HasAttributeFilter("class", "word1");
+            node1.collectInto(tmpNodeList, nodeFilter);
+            if (tmpNodeList.size() != 0) {
+                String price = parseSpan(tmpNodeList.elementAt(0));
+                builder.averPrice(price);
+            }
+
             departmentInfo = builder.build();
             departmentInfo.setDistrictCode(districtCode);
             departmentInfo.setDistrictName(districtName);
-            departmentInfoList.add(departmentInfo);
+
+
             log.info("parse department :{} successfully", departmentInfo);
+
+            departmentInfoList.add(departmentInfo);
         }
         return departmentInfoList;
     }
@@ -251,7 +290,7 @@ public class DepartmentParser {
         StringBuilder sb = new StringBuilder();
         NodeList priceNodeList = new NodeList();
         NodeFilter nodeFilter = new TagNameFilter("span");
-        node.getChildren().elementAt(1).collectInto(priceNodeList, nodeFilter);
+        node.collectInto(priceNodeList, nodeFilter);
         for (Node spanNode : priceNodeList.toNodeArray()) {
             if (spanNode instanceof Span) {
                 String attribute = ((Span) spanNode).getAttribute("class");

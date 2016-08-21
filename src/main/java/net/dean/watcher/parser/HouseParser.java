@@ -1,8 +1,6 @@
 package net.dean.watcher.parser;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
 import java.util.concurrent.CountDownLatch;
@@ -15,6 +13,7 @@ import com.google.common.base.Charsets;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.hash.Hashing;
+import net.dean.common.CommonHttpURLConnection;
 import org.apache.commons.lang3.StringUtils;
 import org.htmlparser.Node;
 import org.htmlparser.NodeFilter;
@@ -99,7 +98,7 @@ public class HouseParser {
      * @throws Exception
      */
     public Map<String, String> parseAllSellCredit(final DepartmentInfo departmentInfo) throws InterruptedException, IOException, ParserException {
-        Parser parser = new Parser((new URL(departmentInfo.getUrl())).openConnection());
+        Parser parser = new Parser(CommonHttpURLConnection.getURLConnection(departmentInfo.getUrl()));
 
         //解析预售证
         NodeFilter nodeFilter = new HasAttributeFilter("id", "presell_dd");
@@ -134,7 +133,7 @@ public class HouseParser {
 
         Map<String, String> buildingMap = Maps.newHashMap();
 
-        Parser parser = new Parser((new URL(url)).openConnection());
+        Parser parser = new Parser(CommonHttpURLConnection.getURLConnection(url));
 
         //解析预售证
         NodeFilter nodeFilter = new HasAttributeFilter("id", "building_dd");
@@ -164,7 +163,6 @@ public class HouseParser {
         for (Node pageNode : nodeList.elementAt(0).getChildren().toNodeArray()) {
             try {
                 if (pageNode instanceof LinkTag) {
-                    String sellCredit = pageNode.toPlainTextString();
                     String rawId = ((LinkTag) pageNode).getAttribute("id");
                     if (StringUtils.isBlank(rawId)) {
                         continue;
@@ -194,7 +192,7 @@ public class HouseParser {
      */
     public int parsePageInfo(String url, DepartmentInfo departmentInfo) throws ParserException, IOException {
 
-        Parser parser = new Parser((new URL(url)).openConnection());
+        Parser parser = new Parser(CommonHttpURLConnection.getURLConnection(url));
 
         int page = 0;
         //解析页数
@@ -227,7 +225,7 @@ public class HouseParser {
                       Map<String, HouseInfo> unSellHouseInfoMap,
                       List<HouseInfo> currentSellHouseInfoList)
             throws InterruptedException, IOException, ParserException {
-        Parser parser = new Parser((new URL(url)).openConnection());
+        Parser parser = new Parser(CommonHttpURLConnection.getURLConnection(url));
 
         NodeFilter nodeFilter = new HasAttributeFilter("style", "background-color:#f6f6f6");
         NodeList rootNodeList = parser.extractAllNodesThatMatch(nodeFilter);
