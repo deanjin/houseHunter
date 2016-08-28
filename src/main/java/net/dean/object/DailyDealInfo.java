@@ -71,6 +71,7 @@ public class DailyDealInfo implements Serializable, Cloneable {
     private int     parseDay;
     private int     parseHour;
     private LocalDateTime localDateTime = LocalDateTime.now();
+    private int     parseOK=1;
 
     public int getParseHour() {
         return parseHour;
@@ -103,6 +104,15 @@ public class DailyDealInfo implements Serializable, Cloneable {
     public void setDistrictPart(String districtPart) {
         this.districtPart = districtPart;
     }
+
+    public int getParseOK() {
+        return parseOK;
+    }
+
+    public void setParseOK(int parseOK) {
+        this.parseOK = parseOK;
+    }
+
 
     public static class Builder{
         private String  name;

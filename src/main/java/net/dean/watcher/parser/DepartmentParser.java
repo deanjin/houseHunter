@@ -105,7 +105,12 @@ public class DepartmentParser {
 //        runDepartment("万科郡西澜山", "http://www.tmsf.com/newhouse/property_330184_186063736_price.htm", "余杭", "330184", "18219", null);
 
 //        runDepartment("西溪蓝海", "http://www.tmsf.com/newhouse/property_330184_177675733_price.htm", "余杭", "330184", "14792", null);
-        runDepartment("雍荣华庭", "http://www.tmsf.com/newhouse/property_33_226845036_price.htm", "拱墅", "330105", "27560", null);
+//        runDepartment("雍荣华庭", "http://www.tmsf.com/newhouse/property_33_226845036_price.htm", "拱墅", "330105", "27560", null);
+
+//        runDepartment("都会翡翠花苑", "http://www.tmsf.com/newhouse/property_33_235799135_price.htm", "江干", "330104", "33441", null);
+//        runDepartment("运河金麟府", "http://www.tmsf.com/newhouse/property_33_240333664_price.htm", "拱墅", "330105", "37695", null);
+//        runDepartment("映月台公寓", "http://www.tmsf.com/newhouse/property_330184_290596929_price.htm", "余杭", "330184", "22902", null);
+        runDepartment("溪岸悦府", "http://www.tmsf.com/newhouse/property_330184_166388413_price.htm", "余杭", "330184", "25625", null);
 
 
     }

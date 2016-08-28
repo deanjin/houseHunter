@@ -64,7 +64,11 @@ public class DailyDealParser {
             "万科郡西澜山",
             "紫蝶苑",
             "西溪蓝海",
-            "雍荣华庭");
+            "雍荣华庭",
+            "都会翡翠花苑",
+            "运河金麟府",
+            "映月台公寓",
+            "溪岸悦府");
 //            "白马湖和院");
 
     public static void main(String[] args) {
@@ -216,30 +220,36 @@ public class DailyDealParser {
      */
     public boolean updateDealInfo(int parseHour, int parseDay, List<DailyDealInfo> dailyDealInfoList, List<DailyDealInfo> curHourDailyDealInfoList) {
 
-            //更新数据库
-            insertDailyDealInfoToDB(dailyDealInfoList);
+        List<DailyDealInfo> recordDailyDealList = new ArrayList<>();
+        dailyDealInfoList.forEach(e->{
+                try {
+                    recordDailyDealList.add((DailyDealInfo) e.clone());
+                }catch(Exception e1) {
 
-            //跟前一个小时的成交记录做diff得到这个小时的成交记录
-            dailyDealInfoList
-                    .stream()
-                    .filter(e -> curHourDailyDealInfoList.contains(e))
-                    .forEach(w -> {
-                        DailyDealInfo dailyDealInfo = curHourDailyDealInfoList.get(curHourDailyDealInfoList.indexOf(w));
-                        double previousDealArea = w.getDealArea();
-                        double previousDealAvgPrice = w.getDealAvgPrice();
-                        w.setDealNumber(w.getDealNumber() - dailyDealInfo.getDealNumber());
-                        w.setBookingNumber(w.getBookingNumber() - dailyDealInfo.getBookingNumber());
-                        w.setDealArea(w.getDealArea() - dailyDealInfo.getDealArea());
-                        w.setDealAvgPrice((previousDealAvgPrice * previousDealArea
-                                - dailyDealInfo.getDealAvgPrice() * dailyDealInfo.getDealArea())
-                                / w.getDealArea());
-                    });
+                }
+        });
+
+        boolean isParseOK = true;
+        //跟前一个小时的成交记录做diff得到这个小时的成交记录
+        dailyDealInfoList
+                .stream()
+                .filter(e -> curHourDailyDealInfoList.contains(e))
+                .forEach(w -> {
+                    DailyDealInfo dailyDealInfo = curHourDailyDealInfoList.get(curHourDailyDealInfoList.indexOf(w));
+                    double previousDealArea = w.getDealArea();
+                    double previousDealAvgPrice = w.getDealAvgPrice();
+                    w.setDealNumber(w.getDealNumber() - dailyDealInfo.getDealNumber());
+                    w.setBookingNumber(w.getBookingNumber() - dailyDealInfo.getBookingNumber());
+                    w.setDealArea(w.getDealArea() - dailyDealInfo.getDealArea());
+                    w.setDealAvgPrice((previousDealAvgPrice * previousDealArea
+                            - dailyDealInfo.getDealAvgPrice() * dailyDealInfo.getDealArea())
+                            / w.getDealArea());
+                });
 
 
         try {
             FileOP.writeFile("log/dailyDealInfo", String.valueOf(new Date()), dailyDealInfoList);
         } catch (Exception e) {
-            log.error("failed to write daily deal info");
         }
 
         for (DailyDealInfo dailyDealInfo : dailyDealInfoList) {
@@ -250,9 +260,16 @@ public class DailyDealParser {
                 try {
                     findSellHouse(dailyDealInfo);
                 }catch(Exception e){
-                    log.error("when findSellHouse for {} catch exception:{}",dailyDealInfo.toString(),e);
+                    isParseOK = false;
+                    FileOP.writeFile("log/daily_error_"+LocalDate.now().toString(),
+                            String.format("when findSellHouse for {} catch exception:{}",dailyDealInfo.toString(),e));
                 }
             }
+        }
+
+        if(isParseOK) {
+            //更新数据库
+            insertDailyDealInfoToDB(recordDailyDealList);
         }
 
         log.info("finish to parse in hour:{} of day:{}", parseHour, parseDay);
@@ -311,6 +328,7 @@ public class DailyDealParser {
         int dealNumber = dailyDealInfo.getDealNumber();
 
         boolean isFound = false;
+        List<HouseInfo> tmpHouseInfos = new ArrayList<>();
         //有可能当前小时的统计数落后于实际的这个销售数
         //将当前小时的所有出售的房子按照实际销售数量做组合排列,选出其中的一组总销售面积满足实际销售面积
         if(currentSellHouseInfoList.size() > dealNumber){
@@ -324,9 +342,9 @@ public class DailyDealParser {
                 List<List<Integer>> combinationList = AssistantOP.getCombinationForList(numList, dealNumber);
                 for (List<Integer> list : combinationList) {
                     double dealArea = list.stream().mapToDouble(e -> currentSellHouseInfoList.get(e).getOriginArea()).sum();
-                    if (dealArea == dailyDealInfo.getDealArea()) {
+                    if (Math.abs(dealArea - dailyDealInfo.getDealArea()) <= 0.01) {
                         for (int i = list.size(); i > 0; --i) {
-                            currentSellHouseInfoList.remove(i);
+                            tmpHouseInfos.add(currentSellHouseInfoList.get(i));
                         }
                         isFound = true;
                         break;
@@ -336,6 +354,11 @@ public class DailyDealParser {
                 FileOP.writeFile("log/daily_error_"+LocalDate.now().toString(),
                         String.format("failed to updatePrice:%s, exception:%s",dailyDealInfo,e));
             }
+        }
+
+        if(isFound){
+            currentSellHouseInfoList.clear();
+            currentSellHouseInfoList.addAll(tmpHouseInfos);
         }
 
         //如果发现当前该楼盘的成交量与实际上的成交量有问题,那肯定是有次爬取失败导致数据不一致
@@ -348,16 +371,15 @@ public class DailyDealParser {
                             e.setDealPrice(dailyDealInfo.getDealAvgPrice());
                             e.setStatus("已售");
                             dataOP.updateHouseDealInfo(e);
+                            //写入到日志文件用于集成elk
+                            ESOP.writeToES("log/daily_deal_info_detail_es", JSONObject.toJSONString(e));
                         }
                 );
-                FileOP.writeFile("log/dailyDealInfo_parse_error", String.valueOf(new Date()), dailyDealInfo);
-                FileOP.writeFile("log/dailyDealInfo_parse_again", String.valueOf(new Date()), dailyDealInfo);
-                FileOP.writeFile("log/dailyDealInfo_parse_error", String.valueOf(new Date()), currentSellHouseInfoList);
-                FileOP.writeFile("log/dailyDealInfo_parse_diff", String.valueOf(new Date()), diffSellHouseInfoList);
+                FileOP.writeFile("log/dailyDealInfo_parse_daily_deal_error", String.valueOf(new Date()), dailyDealInfo);
+                FileOP.writeFile("log/dailyDealInfo_parse_current_house_error", String.valueOf(new Date()), currentSellHouseInfoList);
             } catch (Exception e) {
-                log.error("failed to write daily deal parse error info ");
             }
-            log.error("sell house can't be matched");
+            return;
         }
 
         try {
@@ -366,8 +388,6 @@ public class DailyDealParser {
             log.error("failed to write daily deal parse info");
         }
 
-
-        log.info(currentSellHouseInfoList.toString());
 
         double originTotalPrice = currentSellHouseInfoList.stream().mapToDouble(e -> e.getTotalPrice()).sum();
 

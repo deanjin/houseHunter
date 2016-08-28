@@ -130,6 +130,15 @@ public class DepartmentInfo {
 
     public DepartmentInfo(){}
 
+    public DepartmentInfo(String name,  String url,String districtName, String districtCode, String averPrice) {
+        this.name = name;
+        this.districtName = districtName;
+        this.districtCode = districtCode;
+        this.averPrice = averPrice;
+        this.url = url;
+    }
+
+
     @Override
     public String toString(){
         return ToStringBuilder.reflectionToString(this);

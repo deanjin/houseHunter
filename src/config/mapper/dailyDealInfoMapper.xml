@@ -11,6 +11,7 @@
                 <id column="deal_avg_price" property="dealAvgPrice" javaType="java.lang.Double"/>
                 <id column="parse_day" property="parseDay" javaType="java.lang.Integer"/>
                 <id column="parse_hour" property="parseHour" javaType="java.lang.Integer"/>
+                <id column="parse_ok" property="parseOK" javaType="java.lang.Integer"/>
             </resultMap>
     
             <resultMap id="dailyBriefInfo" type="net.dean.object.DailyBriefInfo">
@@ -25,14 +26,14 @@
 
 
             <insert id="insertDailyDealInfo" parameterType="DailyDealInfo">
-              INSERT INTO daily_deal_info(`name`,district,district_part,deal_number,booking_number,deal_area,deal_avg_price,parse_day,parse_hour)
-              VALUES(#{name},#{district},#{districtPart},#{dealNumber},#{bookingNumber},#{dealArea},#{dealAvgPrice},#{parseDay},#{parseHour})
+              INSERT INTO daily_deal_info(`name`,district,district_part,deal_number,booking_number,deal_area,deal_avg_price,parse_day,parse_hour,parse_ok)
+              VALUES(#{name},#{district},#{districtPart},#{dealNumber},#{bookingNumber},#{dealArea},#{dealAvgPrice},#{parseDay},#{parseHour},#{parseOK})
             </insert>
             <select id="getDailyDealInfoByDate" resultMap="dailyDealInfo" parameterType="java.lang.Integer">
                 SELECT * FROM daily_deal_info WHERE
                 parse_day=#{value}
                 AND
-                parse_hour IN ( (SELECT MAX(parse_hour) FROM daily_deal_info WHERE parse_day=#{value}))
+                parse_hour IN ( (SELECT MAX(parse_hour) FROM daily_deal_info WHERE parse_day=#{value} and parse_OK=1))
             </select>
 
             <insert id="insertDailyBriefInfo" parameterType="DailyBriefInfo">

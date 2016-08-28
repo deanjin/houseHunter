@@ -179,11 +179,26 @@ public class DataOP {
         return null;
     }
 
+    public HouseInfo getHouseByHashCode(String hashCode){
+        try {
+            SqlSession session = sessionFactory.openSession();
+            HouseInfo houseInfo = session.selectOne("selectHouseForHashCode",hashCode);
+            session.commit();
+            session.close();
+            return houseInfo;
+        }catch(Exception e){
+            log.error("when do getUnSellHouseByName {} catch exception: {}", hashCode,e);
+            FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("when do getHouseByHashCode %s catch exception: %s",hashCode,e));
+        }
+        return null;
+    }
+
+
 
     public boolean updateHouseDealInfo(HouseInfo houseInfo){
         try {
             SqlSession session = sessionFactory.openSession();
-            List<HouseInfo> houseInfoList = session.selectList("updateHouseDealInfo",houseInfo);
+            session.selectList("updateHouseDealInfo",houseInfo);
             session.commit();
             session.close();
             return true;
@@ -197,7 +212,7 @@ public class DataOP {
     public boolean updateConstraintHouseDealInfo(HouseInfo houseInfo){
         try {
             SqlSession session = sessionFactory.openSession();
-            List<HouseInfo> houseInfoList = session.selectList("updateConstraintHouseDealInfo",houseInfo);
+            session.selectList("updateConstraintHouseDealInfo",houseInfo);
             session.commit();
             session.close();
             return true;
@@ -234,5 +249,19 @@ public class DataOP {
             FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("when do updateHouseInfo %s catch exception: %s", houseInfo ,e));
         }
         return false;
+    }
+
+    public double getMinDealPercent(String departmentName){
+        try {
+            SqlSession session = sessionFactory.openSession();
+            double result = session.selectOne("selectMinDealPercent",departmentName);
+            session.commit();
+            session.close();
+            return result;
+        }catch(Exception e){
+            log.error("when do updateHouseInfo {} catch exception: {}", departmentName ,e);
+            FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("when do updateHouseInfo %s catch exception: %s", departmentName ,e));
+        }
+        return 0;
     }
 }

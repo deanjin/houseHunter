@@ -49,8 +49,16 @@
                 SELECT * from house_info where department_name = #{value} and status = '已售'
             </select>
 
+            <select id="selectHouseForHashCode" parameterType="String" resultMap="houseInfo">
+                SELECT * from house_info where hash_code = #{value} and status = '可售'
+            </select>
+
+            <select id="selectMinDealPercent" parameterType="String" resultType="java.lang.Double">
+                SELECT min(deal_percent) from house_info where department_name = #{value} and status = '已售' and deal_date > date_sub(now(), interval 1 day)
+            </select>
+
             <select id="updateHouseDealInfo" parameterType="houseInfo">
-                UPDATE house_info set deal_price=#{dealPrice}, status='已售', deal_date = now() WHERE id=#{id}
+                UPDATE house_info set deal_price=#{dealPrice}, status='已售', deal_date = now(), deal_percent=#{dealPercent} WHERE id=#{id}
             </select>
 
             <select id="updateConstraintHouseDealInfo" parameterType="houseInfo">

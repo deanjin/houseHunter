@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import net.dean.common.FileOP;
 import net.dean.setting.URLConfig;
 import net.dean.watcher.parser.SellCreditParser;
+import net.dean.watcher.parser.SpecialParser;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
@@ -58,19 +59,20 @@ public class DailyDealInfoRunner {
                         List<DailyBriefInfo> dailyBriefInfoList = new ArrayList();
                         if (localTime.getHour() == MappingSet.RECORD_HOUR && localTime.getMinute() == 21){
                             dailyBriefInfoList = dailyDealParser.parseDailyBriefInfo();
-                        }
 
-                        //计算房价指数
-                        if(localTime.getHour() == MappingSet.RECORD_HOUR && localTime.getMinute() == 21 ){
+                            //计算房价指数
                             IndexCalculator indexCalculator = new IndexCalculator();
                             indexCalculator.calHouseIndexer(dailyDealInfoList,dailyBriefInfoList);
-                        }
 
-                        //爬取新的预售证
-                        if(localTime.getHour() == MappingSet.RECORD_HOUR && localTime.getMinute() == 21){
+                            //每天23点更新销售但是未成功记录的房子信息
+                            SpecialInfoRunner specialInfoRunner = new SpecialInfoRunner();
+                            specialInfoRunner.run();
+
+                            //爬取新的预售证
                             SellCreditParser sellCreditParser = new SellCreditParser();
                             sellCreditParser.run(URLConfig.URL_PREFIX + "/index.jsp");
                         }
+
                     } catch (Exception e) {
                         log.error("failed to parse daily deal info in {}, exception:{}", localTime,e);
                         FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("failed to parse daily deal info in %s, exception:%s",localTime,e));
