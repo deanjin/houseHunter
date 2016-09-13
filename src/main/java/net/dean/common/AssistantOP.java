@@ -1,14 +1,15 @@
 package net.dean.common;
 
 import com.google.common.base.Charsets;
-import com.google.common.collect.Iterators;
 import com.google.common.hash.Hashing;
 import net.dean.dal.DataOP;
 import net.dean.object.HouseInfo;
 import org.apache.commons.lang3.StringUtils;
-import org.htmlparser.tags.LinkTag;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by dean on 16/7/18.
@@ -18,42 +19,13 @@ public class AssistantOP {
     private static DataOP dataOP = new DataOP();
 
     public static void main(String[] args){
-        List<HouseInfo> houseInfoList = new ArrayList<>();
-        HouseInfo houseInfo = new HouseInfo();
-        houseInfo.setOriginArea(80);
-        houseInfoList.add(houseInfo);
-        houseInfo = new HouseInfo();
-        houseInfo.setOriginArea(90);
-        houseInfoList.add(houseInfo);
-        houseInfo = new HouseInfo();
-        houseInfo.setOriginArea(100);
-        houseInfoList.add(houseInfo);
-        houseInfo = new HouseInfo();
-        houseInfo.setOriginArea(110);
-        houseInfoList.add(houseInfo);
-        houseInfo = new HouseInfo();
-        houseInfo.setOriginArea(130);
-        houseInfoList.add(houseInfo);
 
-        List<Integer> numList = new ArrayList<>();
-        for(int i=0;i<houseInfoList.size();i++){
-            numList.add(i);
-        }
-
-        List<List<Integer>> combinationList = AssistantOP.getCombinationForList(numList,2);
-        for(List<Integer> list : combinationList){
-            double dealArea = list.stream().mapToDouble(e->houseInfoList.get(e).getOriginArea()).sum();
-            if(dealArea==200){
-                for(int i=list.size();i>0;--i){
-                    houseInfoList.remove(i);
-                }
-                break;
-            }
-        }
-
-        combinationList.forEach(System.out::println);
     }
 
+    /***
+     * 更新一个楼盘的hashcode
+     * @param departmentName
+     */
     public static void updateHashCodeForHouse(String departmentName){
         if(StringUtils.isBlank(departmentName)){
             return;
@@ -72,6 +44,12 @@ public class AssistantOP {
         );
     }
 
+    /***
+     * 产生一个集合的所有组合情况
+     * @param list
+     * @param n
+     * @return
+     */
     public static List<List<Integer>> getCombinationForList(List<Integer> list, int n){
         if(list==null || list.isEmpty() || n > list.size()){
             return Collections.EMPTY_LIST;

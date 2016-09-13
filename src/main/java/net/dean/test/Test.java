@@ -17,6 +17,44 @@ public class Test {
     }
 
     private static void testCombination(){
+        List<HouseInfo> houseInfoList = new ArrayList<>();
+        HouseInfo houseInfo = new HouseInfo();
+        houseInfo.setOriginArea(80);
+        houseInfoList.add(houseInfo);
+        houseInfo = new HouseInfo();
+        houseInfo.setOriginArea(90);
+        houseInfoList.add(houseInfo);
+        houseInfo = new HouseInfo();
+        houseInfo.setOriginArea(100);
+        houseInfoList.add(houseInfo);
+        houseInfo = new HouseInfo();
+        houseInfo.setOriginArea(110);
+        houseInfoList.add(houseInfo);
+        houseInfo = new HouseInfo();
+        houseInfo.setOriginArea(130);
+        houseInfoList.add(houseInfo);
+
+        List<Integer> numList = new ArrayList<>();
+        for(int i=0;i<houseInfoList.size();i++){
+            numList.add(i);
+        }
+
+        List<List<Integer>> combinationList = AssistantOP.getCombinationForList(numList,2);
+        for(List<Integer> list : combinationList){
+            double dealArea = list.stream().mapToDouble(e->houseInfoList.get(e).getOriginArea()).sum();
+            if(dealArea==200){
+                for(int i=list.size();i>0;--i){
+                    houseInfoList.remove(i);
+                }
+                break;
+            }
+        }
+
+        combinationList.forEach(System.out::println);
+    }
+
+
+    private static void testHouseCombination(){
 
         HouseInfo houseInfo = new HouseInfo();
         houseInfo.setOriginArea(109.46);

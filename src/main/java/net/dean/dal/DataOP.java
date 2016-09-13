@@ -179,6 +179,20 @@ public class DataOP {
         return null;
     }
 
+    public List<HouseInfo> getConstraintHouseByName(String name){
+        try {
+            SqlSession session = sessionFactory.openSession();
+            List<HouseInfo> houseInfoList = session.selectList("selectConstraintHouseForName",name);
+            session.commit();
+            session.close();
+            return houseInfoList;
+        }catch(Exception e){
+            log.error("when do selectConstraintHouseForName {} catch exception: {}", name,e);
+            FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("when do selectConstraintHouseForName %s catch exception: %s",name,e));
+        }
+        return null;
+    }
+
     public HouseInfo getHouseByHashCode(String hashCode){
         try {
             SqlSession session = sessionFactory.openSession();
@@ -222,6 +236,21 @@ public class DataOP {
         }
         return false;
     }
+
+    public boolean updateUnsoldHouseDealInfo(HouseInfo houseInfo){
+        try {
+            SqlSession session = sessionFactory.openSession();
+            session.selectList("updateUnsoldHouseDealInfo",houseInfo);
+            session.commit();
+            session.close();
+            return true;
+        }catch(Exception e){
+            log.error("when do updateUnsoldHouseDealInfo {} catch exception: {}", houseInfo ,e);
+            FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("when do updateUnsoldHouseDealInfo %s catch exception: %s", houseInfo ,e));
+        }
+        return false;
+    }
+
 
     public List<HouseInfo> getAllHouseInfoByDepartmentName(String departmentName){
         List<HouseInfo> houseInfoList = new ArrayList<>();

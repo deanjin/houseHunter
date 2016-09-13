@@ -2,6 +2,7 @@ package net.dean.watcher.parser;
 
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.CharMatcher;
+import net.dean.common.CommonHttpURLConnection;
 import net.dean.common.ESOP;
 import org.apache.commons.lang3.StringUtils;
 import org.htmlparser.Node;
@@ -38,35 +39,23 @@ import net.dean.setting.URLConfig;
 public class SellCreditParser {
 
     private final static Logger log = LoggerFactory.getLogger(SellCreditParser.class);
-
     private final static DataOP dataOP = new DataOP();
-
     private final static HouseParser houseParser = new HouseParser();
 
     public static void main(String[] args) throws InterruptedException, IOException, ParserException  {
-        SellCreditParser sellCreditParser = new SellCreditParser();
-        sellCreditParser.run("http://www.tmsf.com/index.jsp");
-//        sellCreditParser.parseOneSellCredit();
+
     }
 
+    /***
+     * 爬取透明网最近的预售证信息
+     * @param url
+     * @throws InterruptedException
+     * @throws IOException
+     * @throws ParserException
+     */
     public void run(String url) throws InterruptedException, IOException, ParserException {
 
-//        "GET /index.jsp HTTP/1.1
-//        Host: www.tmsf.com
-//        Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-//Cookie: Hm_lpvt_d7682ab43891c68a00de46e9ce5b76aa=1471043278; Hm_lvt_d7682ab43891c68a00de46e9ce5b76aa=1470990241; pgv_pvid=5516016926; CNZZDATA1253675216=712919559-1470787474-http%253A%252F%252Fwww.tmsf.com%252F%7C1471041400; IESESSION=alive; JSESSIONID=6B4D231FBB77C5DB6C420E969DE1079A.lb3; ROUTEID=.lb3; __jsluid=a3eb302a0320f8f11b836ac0c7b08941; __qc_wId=831; _qddab=3-9a62e6.irsb2ydr; _qddamta_800055708=3-0; Hm_lpvt_bbb8b9db5fbc7576fd868d7931c80ee1=1471043316; Hm_lvt_bbb8b9db5fbc7576fd868d7931c80ee1=1470790610,1471039722,1471041894; pgv_pvi=5287058432; pgv_si=s153255936
-//User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/601.4.4 (KHTML, like Gecko) Version/9.0.3 Safari/601.4.4
-//Accept-Language: zh-cn
-//Accept-Encoding: gzip, deflate
-//Connection: keep-alive"
-
-//        Parser parser = new Parser(new URL(url).openConnection());
-        URLConnection urlConnection = new URL(url).openConnection();
-        urlConnection.setRequestProperty("User-Agent","Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/601.4.4");
-//        urlConnection.setRequestProperty("X-Forward-For","115.205.144.23");
-//        urlConnection.setRequestProperty("Client-IP","115.205.144.23");
-//        urlConnection.setRequestProperty("Cookie","Hm_lpvt_d7682ab43891c68a00de46e9ce5b76aa=1471043278; Hm_lvt_d7682ab43891c68a00de46e9ce5b76aa=1470990241; pgv_pvid=5516016926; CNZZDATA1253675216=712919559-1470787474-http%253A%252F%252Fwww.tmsf.com%252F%7C1471041400; IESESSION=alive; JSESSIONID=6B4D231FBB77C5DB6C420E969DE1079A.lb3; ROUTEID=.lb3; __jsluid=a3eb302a0320f8f11b836ac0c7b08941; __qc_wId=831; _qddab=3-9a62e6.irsb2ydr; _qddamta_800055708=3-0; Hm_lpvt_bbb8b9db5fbc7576fd868d7931c80ee1=1471043316; Hm_lvt_bbb8b9db5fbc7576fd868d7931c80ee1=1470790610,1471039722,1471041894; pgv_pvi=5287058432; pgv_si=s153255936");
-        urlConnection.setRequestProperty("Cookie","CNZZDATA1253675216=348674432-1471762978-http%253A%252F%252Fwww.tmsf.com%252F%7C1471865998; JSESSIONID=454EAF8B1B533F90B12B81489322F114.lb1; ROUTEID=.lb2; __jsl_clearance=1471867618.735|0|YvIouxtcO618%2FU%2FaGdTB9cHf30k%3D; __jsluid=884bc1a619f3dc8efda068b15b80596a; Hm_lpvt_bbb8b9db5fbc7576fd868d7931c80ee1=1471869232; Hm_lvt_bbb8b9db5fbc7576fd868d7931c80ee1=1471767551,1471869112; pgv_pvi=440478720");
+        URLConnection urlConnection = CommonHttpURLConnection.getURLConnection(url);
         Parser parser = new Parser(urlConnection);
         NodeFilter nodeFilter = new HasAttributeFilter("class", "sale1");
         NodeList nodeList = parser.extractAllNodesThatMatch(nodeFilter);
@@ -91,12 +80,10 @@ public class SellCreditParser {
         }
     }
 
-    private void parseOneSellCredit(){
-        SellCreditInfo sellCreditInfo = new SellCreditInfo();
-        sellCreditInfo.setUrl("/newhouse/property_33_232615031_price.htm");
-        sellCreditInfo.setName("万科&middot;新都会1958");
-        sellCreditInfo.setSellCredit("2016000104");
-
+    /***
+     * 爬取某一个预售证楼盘信息
+     */
+    public void parseOneSellCredit(SellCreditInfo sellCreditInfo){
         try {
             parseHouseInfo(sellCreditInfo);
         }catch(Exception e){
@@ -104,7 +91,7 @@ public class SellCreditParser {
         }
     }
 
-    private SellCreditInfo parseSellParser(Node tableRow) {
+    public SellCreditInfo parseSellParser(Node tableRow) {
         SellCreditInfo sellCreditInfo = new SellCreditInfo();
         LinkTag linkTag;
 
@@ -118,13 +105,6 @@ public class SellCreditParser {
     }
 
     private void parseHouseInfo(SellCreditInfo sellCreditInfo) throws InterruptedException, IOException, ParserException{
-
-        //该预售证是否已经爬过
-//        HouseInfo houseInfo = dataOP.getHouseInfoByDepartmentNameAndSellCredit(sellCreditInfo);
-//        if(houseInfo != null){
-//            log.info("already parsing sell credit:{}",sellCreditInfo);
-//            return;
-//        }
 
         HouseInfo houseInfo = dataOP.getHouseInfoByDepartmentName(sellCreditInfo.getName());
         DepartmentInfo departmentInfo = new DepartmentInfo();

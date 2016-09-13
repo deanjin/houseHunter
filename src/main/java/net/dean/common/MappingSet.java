@@ -19,7 +19,7 @@ public class MappingSet {
     private final static Set<String> districtSet = ImmutableSet.of(
             "上城","下城","西湖","拱墅","滨江","江干");
 
-    public final static int RECORD_HOUR = 23;
+    public final static int RECORD_HOUR = 0;
 
     public static boolean isMainDistrict(String district){
         return districtSet.contains(district);

@@ -74,6 +74,28 @@ public class DailyBriefInfo {
         this.parseHour = parseHour;
     }
 
+    public DailyBriefInfo() {
+    }
+
+    public DailyBriefInfo(String district, int dealNumber, int bookingNumber, int recentNumber, int parseDay, int parseHour) {
+        this.district = district;
+        this.dealNumber = dealNumber;
+        this.bookingNumber = bookingNumber;
+        this.recentNumber = recentNumber;
+        this.parseDay = parseDay;
+        this.parseHour = parseHour;
+    }
+
+    public DailyBriefInfo(int id, String district, int dealNumber, int bookingNumber, int recentNumber, int parseDay, int parseHour) {
+        this.id = id;
+        this.district = district;
+        this.dealNumber = dealNumber;
+        this.bookingNumber = bookingNumber;
+        this.recentNumber = recentNumber;
+        this.parseDay = parseDay;
+        this.parseHour = parseHour;
+    }
+
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);

@@ -51,13 +51,13 @@ public class DailyDealInfoRunner {
                     log.info("begin to run daily deal info in time:{}", localTime);
                     try {
                         List<DailyDealInfo> dailyDealInfoList = new ArrayList();
-                        if (localTime.getHour() > 9 && localTime.getHour() <= MappingSet.RECORD_HOUR) {
+                        if (localTime.getHour() > 9  || localTime.getHour() == MappingSet.RECORD_HOUR) {
                             dailyDealInfoList = dailyDealParser.run("http://www.tmsf.com/daily.htm");
                         }
 
-                        //爬取剩余库存
-                        List<DailyBriefInfo> dailyBriefInfoList = new ArrayList();
-                        if (localTime.getHour() == MappingSet.RECORD_HOUR && localTime.getMinute() == 21){
+                        if (localTime.getHour() == MappingSet.RECORD_HOUR && localTime.getMinute() == 25){
+                            //爬取剩余库存
+                            List<DailyBriefInfo> dailyBriefInfoList = new ArrayList();
                             dailyBriefInfoList = dailyDealParser.parseDailyBriefInfo();
 
                             //计算房价指数

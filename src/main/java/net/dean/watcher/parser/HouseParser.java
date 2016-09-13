@@ -1,8 +1,8 @@
 package net.dean.watcher.parser;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -424,12 +424,12 @@ public class HouseParser {
         //爬取该预售证下面的所有楼幢
         Map<String, String> buildingMap = parseBuilding(sellCreditUrl, departmentInfo);
 
-        ExecutorService executorService = Executors.newFixedThreadPool(buildingMap.size());
-        final CountDownLatch countDownLatch = new CountDownLatch(buildingMap.size());
+//        ExecutorService executorService = Executors.newFixedThreadPool(buildingMap.size());
+//        final CountDownLatch countDownLatch = new CountDownLatch(buildingMap.size());
 
         for (Map.Entry<String, String> building : buildingMap.entrySet()) {
-            executorService.execute(
-                    () -> {
+//            executorService.execute(
+//                    () -> {
                         try {
                             String url = String.format(URLConfig.HOUSE_ENTRANCE_URL + "&buildingid=%s", departmentInfo.getUrl(), sellCreditKey, building.getKey());
                             if (state != null) {
@@ -441,14 +441,14 @@ public class HouseParser {
                                 parse(departmentInfo, houseInfoList, url + "&page=" + i, sellCreditValue, writeDB, houseInfoMap, currentSellHouseInfoList);
                             }
 
-                            countDownLatch.countDown();
+//                            countDownLatch.countDown();
                         } catch (Exception e) {
                             log.error("run parseSellCredit catch exception:", e);
                         }
-                    }
-            );
+//                    }
+//            );
         }
-        countDownLatch.await();
+//        countDownLatch.await();
     }
 }
 

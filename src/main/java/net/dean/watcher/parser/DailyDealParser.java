@@ -1,13 +1,23 @@
 package net.dean.watcher.parser;
 
-import com.google.common.collect.*;
-import net.dean.common.*;
+
+import net.dean.common.AssistantOP;
+import net.dean.common.CommonHttpURLConnection;
+import net.dean.common.ESOP;
+import net.dean.common.FileOP;
+import net.dean.common.MappingSet;
 import net.dean.dal.DataOP;
-import net.dean.object.*;
+import net.dean.object.DailyBriefInfo;
+import net.dean.object.DailyDealInfo;
+import net.dean.object.DepartmentInfo;
+import net.dean.object.HouseInfo;
+import net.dean.object.HouseStateInfo;
 
 import com.alibaba.fastjson.JSONObject;
-import com.google.common.base.*;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 import com.google.common.base.Optional;
+import com.google.common.base.CharMatcher;
 import org.apache.commons.lang3.StringUtils;
 import org.htmlparser.Node;
 import org.htmlparser.NodeFilter;
@@ -25,7 +35,13 @@ import java.io.IOException;
 import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -68,7 +84,9 @@ public class DailyDealParser {
             "都会翡翠花苑",
             "运河金麟府",
             "映月台公寓",
-            "溪岸悦府");
+            "溪岸悦府",
+            "萍实公寓",
+            "滨江&middot;锦绣之城");
 //            "白马湖和院");
 
     public static void main(String[] args) {
@@ -369,6 +387,7 @@ public class DailyDealParser {
                         e ->
                         {
                             e.setDealPrice(dailyDealInfo.getDealAvgPrice());
+                            e.setDealPercent(Double.parseDouble(new java.text.DecimalFormat("#.00").format( e.getDealPrice()/(e.getOriginPrice() + e.getDecorationPrice()) )));
                             e.setStatus("已售");
                             dataOP.updateHouseDealInfo(e);
                             //写入到日志文件用于集成elk
@@ -441,7 +460,6 @@ public class DailyDealParser {
 
     public List<DailyBriefInfo> parseDailyBriefInfo() throws IOException, ParserException {
 
-
         Parser parser = new Parser(CommonHttpURLConnection.getURLConnection("http://www.tmsf.com/index.jsp"));
         NodeFilter nodeFilter = new HasAttributeFilter("id", "myCont5");
         NodeList nodeList = parser.extractAllNodesThatMatch(nodeFilter);
@@ -461,13 +479,11 @@ public class DailyDealParser {
                 .getChildren().elementAt(1).getChildren();
 
         for (int i = 5; i <= 13; i = i + 2) {
-            DailyBriefInfo dailyBriefInfo = new DailyBriefInfo();
-            dailyBriefInfo.setDistrict(CharMatcher.WHITESPACE.trimFrom(infoNodeList.elementAt(i).getChildren().elementAt(1).toPlainTextString()));
-            dailyBriefInfo.setDealNumber(Integer.parseInt(CharMatcher.WHITESPACE.trimFrom(infoNodeList.elementAt(i).getChildren().elementAt(3).toPlainTextString())));
-            dailyBriefInfo.setBookingNumber(Integer.parseInt(CharMatcher.WHITESPACE.trimFrom(infoNodeList.elementAt(i).getChildren().elementAt(5).toPlainTextString())));
-            dailyBriefInfo.setRecentNumber(Integer.parseInt(CharMatcher.WHITESPACE.trimFrom(infoNodeList.elementAt(i).getChildren().elementAt(7).toPlainTextString())));
-            dailyBriefInfo.setParseDay(parseDay);
-            dailyBriefInfo.setParseHour(parseHour);
+            DailyBriefInfo dailyBriefInfo = new DailyBriefInfo(CharMatcher.WHITESPACE.trimFrom(infoNodeList.elementAt(i).getChildren().elementAt(1).toPlainTextString()),
+                    Integer.parseInt(CharMatcher.WHITESPACE.trimFrom(infoNodeList.elementAt(i).getChildren().elementAt(3).toPlainTextString())),
+                    Integer.parseInt(CharMatcher.WHITESPACE.trimFrom(infoNodeList.elementAt(i).getChildren().elementAt(5).toPlainTextString())),
+                    Integer.parseInt(CharMatcher.WHITESPACE.trimFrom(infoNodeList.elementAt(i).getChildren().elementAt(7).toPlainTextString())),
+                    parseDay,parseHour);
 
             dailyBriefInfoList.add(dailyBriefInfo);
             dataOP.insertBriefDealInfo(dailyBriefInfo);
