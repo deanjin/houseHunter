@@ -65,7 +65,7 @@ public class DepartmentParser {
         /*for(Table.Cell<String, String, String> cell : distinctTable.cellSet()){
             runDistinct(cell);
         }*/
-//        runDepartment("西溪河滨之城","http://www.tmsf.com/newhouse/property_33_64897079_price.htm","西湖区","330108","29137",null);
+//        runDepartment("西溪河滨之城","http://www.tmsf.com/newhouse/property_33_64897079_price.htm","西湖区","330106","34000",null);
 //        runDepartment("黄龙金茂悦","http://www.tmsf.com/newhouse/property_33_57411595_price.htm","拱墅","330105","34528",null);
 //        runDepartment("凯德&middot;湖墅观邸","http://www.tmsf.com/newhouse/property_33_93148643_price.htm","拱墅","330105","33566",null);
 //        runDepartment("天峻公寓","http://www.tmsf.com/newhouse/property_330184_81564505_price.htm","余杭","330184","17378",null);
@@ -113,7 +113,12 @@ public class DepartmentParser {
 //        runDepartment("溪岸悦府", "http://www.tmsf.com/newhouse/property_330184_166388413_price.htm", "余杭", "330184", "25625", null);
 
 //        runDepartment("萍实公寓", "http://pay.tmsf.com/newhouse/property_33_78158625_price.htm", "拱墅", "330105", "30976", null);
-        runDepartment("滨江&middot;锦绣之城", "http://www.tmsf.com/newhouse/property_33_290876212_price.htm", "拱墅", "330105", "44585", null);
+//        runDepartment("滨江&middot;锦绣之城", "http://www.tmsf.com/newhouse/property_33_290876212_price.htm", "拱墅", "330105", "44585", null);
+//        runDepartment("阳光城&middot;文澜府", "http://www.tmsf.com/newhouse/property_33_238789032_price.htm", "拱墅", "330105", "32057", null);
+//        runDepartment("海域晶华公寓", "http://www.tmsf.com/newhouse/property_33_92241652_price.htm", "江干", "330104", "47232",null);
+//        runDepartment("玉观邸", "http://www.tmsf.com/newhouse/property_33_16444178_price.htm", "下沙", "330186", "15948",null);
+//        runDepartment("百翘星辉名阁", "http://www.tmsf.com/newhouse/property_33_140153398_price.htm", "下沙", "330186", "12534",null);
+//        runDepartment("碧月华庭", "http://www.tmsf.com/newhouse/property_33_231571583_price.htm", "拱墅", "330105", "36524",null);
 
     }
 

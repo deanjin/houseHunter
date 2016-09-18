@@ -42,6 +42,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.FutureTask;
 import java.util.stream.Collectors;
 
 
@@ -56,38 +58,45 @@ public class DailyDealParser {
     private final DataOP dataOP = new DataOP();
     private final HouseParser houseParser = new HouseParser();
     private final static Set<String> needParseDepartmentSet = ImmutableSet.of(
-            "凯德&middot;湖墅观邸",
-            "黄龙金茂悦",
-            "西溪河滨之城",
-            "天峻公寓",
-            "星空公寓",
-            "万科&middot;新都会1958",
-            "东方星城",
-        "北大资源未名府",
-        "绿城西子田园牧歌",
-            "云杉郡景中心",
-            "国风美域公寓",
-            "绿城九龙仓&middot;柳岸晓风",
-            "九龙仓&middot;珑玺",
-            "水色宜居",
-            "孔雀蓝轩",
-            "学院华庭",
-            "金都艺墅",
-            "滨江&middot;铂金海岸",
-            "卓蓝华庭",
-            "云荷廷",
-            "阳光郡公寓",
-            "万科郡西澜山",
-            "紫蝶苑",
-            "西溪蓝海",
-            "雍荣华庭",
-            "都会翡翠花苑",
-            "运河金麟府",
-            "映月台公寓",
-            "溪岸悦府",
-            "萍实公寓",
-            "滨江&middot;锦绣之城");
+//            "凯德&middot;湖墅观邸",
+//            "黄龙金茂悦",
+            "西溪河滨之城"
+//            "天峻公寓",
+//            "星空公寓",
+//            "万科&middot;新都会1958",
+//            "东方星城",
+//        "北大资源未名府",
+//        "绿城西子田园牧歌",
+//            "云杉郡景中心",
+//            "国风美域公寓",
+//            "绿城九龙仓&middot;柳岸晓风",
+//            "九龙仓&middot;珑玺",
+//            "水色宜居",
+//            "孔雀蓝轩",
+//            "学院华庭",
+//            "金都艺墅",
+//            "滨江&middot;铂金海岸",
+//            "卓蓝华庭",
+//            "云荷廷",
+//            "阳光郡公寓",
+//            "万科郡西澜山",
+//            "紫蝶苑",
+//            "西溪蓝海",
+//            "雍荣华庭",
+//            "都会翡翠花苑",
+//            "运河金麟府",
+//            "映月台公寓",
+//            "溪岸悦府",
+//            "萍实公寓",
+//            "滨江&middot;锦绣之城",
+//            "阳光城&middot;文澜府",
+//            "海域晶华公寓",
+//            "玉观邸",
+//            "百翘星辉名阁",
+//            "碧月华庭");
 //            "白马湖和院");
+    );
+
 
     public static void main(String[] args) {
         DailyDealParser dailyDealParser = new DailyDealParser();
@@ -270,21 +279,34 @@ public class DailyDealParser {
         } catch (Exception e) {
         }
 
+//        CountDownLatch countDownLatch = new CountDownLatch(dailyDealInfoList.size());
+
         for (DailyDealInfo dailyDealInfo : dailyDealInfoList) {
             String name = dailyDealInfo.getName();
             name = name.replace("·", "&middot;");
             dailyDealInfo.setName(name);
             if (needParseDepartmentSet.contains(dailyDealInfo.getName())) {
                 try {
-                    findSellHouse(dailyDealInfo);
+//                    Thread thread = new Thread(
+//                            () -> {findSellHouse(dailyDealInfo);
+//                                countDownLatch.countDown();
+//                            });
+//                    thread.start();
+//                    findSellHouse(dailyDealInfo);
                 }catch(Exception e){
                     isParseOK = false;
                     FileOP.writeFile("log/daily_error_"+LocalDate.now().toString(),
                             String.format("when findSellHouse for {} catch exception:{}",dailyDealInfo.toString(),e));
+                }finally {
+
                 }
             }
         }
+        try {
+//            countDownLatch.await();
+        }catch (Exception e){
 
+        }
         if(isParseOK) {
             //更新数据库
             insertDailyDealInfoToDB(recordDailyDealList);
@@ -322,7 +344,6 @@ public class DailyDealParser {
         departmentInfoList.add(departmentInfo);
 
         List<HouseInfo> currentSellHouseInfoList = new ArrayList<>();
-        List<HouseInfo> diffSellHouseInfoList = new ArrayList<>();
         Map<String, HouseInfo> houseInfoMap = new HashMap<>();
         if (daUnSellHouseInfoList != null) {
             houseInfoMap = daUnSellHouseInfoList.stream().collect(Collectors.toMap(HouseInfo::getHashCode, java.util.function.Function.identity()));
@@ -330,7 +351,13 @@ public class DailyDealParser {
 
         houseParser.run(departmentInfoList, false, houseInfoMap, currentSellHouseInfoList, HouseStateInfo.STATE_SOLD);
 
-        updatePrice(dailyDealInfo, currentSellHouseInfoList, diffSellHouseInfoList);
+        try {
+            FileOP.writeFile("log/dailyDealInfo_current_sell", String.valueOf(new Date()), currentSellHouseInfoList);
+        } catch (Exception e) {
+            log.error("failed to write daily deal parse info");
+        }
+
+        updatePrice(dailyDealInfo, currentSellHouseInfoList);
     }
 
     /**
@@ -338,9 +365,8 @@ public class DailyDealParser {
      *
      * @param dailyDealInfo
      * @param currentSellHouseInfoList
-     * @param diffSellHouseInfoList
      */
-    private void updatePrice(DailyDealInfo dailyDealInfo, List<HouseInfo> currentSellHouseInfoList, List<HouseInfo> diffSellHouseInfoList) {
+    private void updatePrice(DailyDealInfo dailyDealInfo, List<HouseInfo> currentSellHouseInfoList) {
 
         double totalPrice = dailyDealInfo.getDealAvgPrice() * dailyDealInfo.getDealArea();
         int dealNumber = dailyDealInfo.getDealNumber();
@@ -361,9 +387,10 @@ public class DailyDealParser {
                 for (List<Integer> list : combinationList) {
                     double dealArea = list.stream().mapToDouble(e -> currentSellHouseInfoList.get(e).getOriginArea()).sum();
                     if (Math.abs(dealArea - dailyDealInfo.getDealArea()) <= 0.01) {
-                        for (int i = list.size(); i > 0; --i) {
-                            tmpHouseInfos.add(currentSellHouseInfoList.get(i));
+                        for (int i = list.size()-1; i >= 0; --i) {
+                            tmpHouseInfos.add(currentSellHouseInfoList.get(list.get(i)));
                         }
+                        FileOP.writeFile("log/dailyDealInfo_hour_calculation", String.valueOf(new Date()), tmpHouseInfos);
                         isFound = true;
                         break;
                     }
@@ -386,7 +413,7 @@ public class DailyDealParser {
                 currentSellHouseInfoList.stream().forEach(
                         e ->
                         {
-                            e.setDealPrice(dailyDealInfo.getDealAvgPrice());
+                            e.setDealPrice(Double.parseDouble(new java.text.DecimalFormat("#.00").format(dailyDealInfo.getDealAvgPrice())));
                             e.setDealPercent(Double.parseDouble(new java.text.DecimalFormat("#.00").format( e.getDealPrice()/(e.getOriginPrice() + e.getDecorationPrice()) )));
                             e.setStatus("已售");
                             dataOP.updateHouseDealInfo(e);
@@ -394,15 +421,15 @@ public class DailyDealParser {
                             ESOP.writeToES("log/daily_deal_info_detail_es", JSONObject.toJSONString(e));
                         }
                 );
-                FileOP.writeFile("log/dailyDealInfo_parse_daily_deal_error", String.valueOf(new Date()), dailyDealInfo);
-                FileOP.writeFile("log/dailyDealInfo_parse_current_house_error", String.valueOf(new Date()), currentSellHouseInfoList);
+                FileOP.writeFile("log/dailyDealInfo_hour_deal", String.valueOf(new Date()), dailyDealInfo);
+                FileOP.writeFile("log/dailyDealInfo_hour_average", String.valueOf(new Date()), currentSellHouseInfoList);
             } catch (Exception e) {
             }
             return;
         }
 
         try {
-            FileOP.writeFile("log/dailyDealInfo_parse", String.valueOf(new Date()), currentSellHouseInfoList);
+            FileOP.writeFile("log/dailyDealInfo_hour_match", String.valueOf(new Date()), currentSellHouseInfoList);
         } catch (Exception e) {
             log.error("failed to write daily deal parse info");
         }

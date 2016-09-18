@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Test {
     public static void main(String[] args){
-        Test.testCombination();
+        Test.testHouseCombination();
     }
 
     private static void testCombination(){
@@ -54,14 +54,17 @@ public class Test {
     }
 
 
-    private static void testHouseCombination(){
+    public static void testHouseCombination(){
 
         HouseInfo houseInfo = new HouseInfo();
-        houseInfo.setOriginArea(109.46);
+        houseInfo.setOriginArea(88.02);
         List<HouseInfo> currentSellHouseInfoList = new ArrayList<>();
         currentSellHouseInfoList.add(houseInfo);
         houseInfo = new HouseInfo();
-        houseInfo.setOriginArea(89.72);
+        houseInfo.setOriginArea(120.77);
+        currentSellHouseInfoList.add(houseInfo);
+        houseInfo = new HouseInfo();
+        houseInfo.setOriginArea(72.88);
         currentSellHouseInfoList.add(houseInfo);
         int dealNumber = 1;
 
@@ -79,9 +82,9 @@ public class Test {
                 List<List<Integer>> combinationList = AssistantOP.getCombinationForList(numList, dealNumber);
                 for (List<Integer> list : combinationList) {
                     double dealArea = list.stream().mapToDouble(e -> currentSellHouseInfoList.get(e).getOriginArea()).sum();
-                    if (dealArea == 89.72) {
-                        for (int i = list.size(); i > 0; --i) {
-                            tmpHouseInfos.add(currentSellHouseInfoList.get(i));
+                    if (Math.abs(dealArea - 88.02) <= 0.01) {
+                        for (int i = list.size()-1; i >= 0; --i) {
+                            tmpHouseInfos.add(currentSellHouseInfoList.get(list.get(i)));
                         }
                         isFound = true;
                         break;

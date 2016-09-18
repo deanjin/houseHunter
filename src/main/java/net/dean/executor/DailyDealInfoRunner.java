@@ -44,7 +44,7 @@ public class DailyDealInfoRunner {
 
                     log.info("schedule run daily deal info in time:{}", localTime);
 
-                    if(localTime.getMinute() < 21 || localTime.getMinute() > 25){
+                    if(localTime.getMinute() < 0 || localTime.getMinute() > 42){
                         return;
                     }
 
@@ -55,7 +55,7 @@ public class DailyDealInfoRunner {
                             dailyDealInfoList = dailyDealParser.run("http://www.tmsf.com/daily.htm");
                         }
 
-                        if (localTime.getHour() == MappingSet.RECORD_HOUR && localTime.getMinute() == 25){
+                        if (localTime.getHour() == MappingSet.RECORD_HOUR && localTime.getMinute() == 42){
                             //爬取剩余库存
                             List<DailyBriefInfo> dailyBriefInfoList = new ArrayList();
                             dailyBriefInfoList = dailyDealParser.parseDailyBriefInfo();

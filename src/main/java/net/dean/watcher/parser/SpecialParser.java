@@ -112,7 +112,7 @@ public class SpecialParser {
 
                     houseInfo.setStatus("已售");
                     houseInfo.setDealPercent(dealPercent);
-                    houseInfo.setDealPrice(houseInfo.getOriginPrice()*dealPercent);
+                    houseInfo.setDealPrice((houseInfo.getOriginPrice()+houseInfo.getDecorationPrice())*dealPercent);
                         dataOP.updateHouseDealInfo(houseInfo);
                         //写入到日志文件用于集成elk
                         ESOP.writeToES("log/daily_deal_info_detail_es", JSONObject.toJSONString(houseInfo));

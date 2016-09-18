@@ -79,6 +79,20 @@ public class SpecialInfoRunner {
         departmentInfoList.add( new DepartmentInfo("映月台公寓", "http://www.tmsf.com/newhouse/property_330184_290596929_price.htm", "余杭", "330184", "22902"));
         departmentInfoList.add( new DepartmentInfo("溪岸悦府", "http://www.tmsf.com/newhouse/property_330184_166388413_price.htm", "余杭", "330184", "25625"));
 
+        departmentInfoList.add( new DepartmentInfo("阳光城&middot;文澜府", "http://www.tmsf.com/newhouse/property_33_238789032_price.htm", "拱墅", "330105", "32057"));
+
+        departmentInfoList.add( new DepartmentInfo("萍实公寓", "http://pay.tmsf.com/newhouse/property_33_78158625_price.htm", "拱墅", "330105", "30976"));
+
+        departmentInfoList.add( new DepartmentInfo("滨江&middot;锦绣之城", "http://www.tmsf.com/newhouse/property_33_290876212_price.htm", "拱墅", "330105", "44585"));
+
+        departmentInfoList.add( new DepartmentInfo("海域晶华公寓", "http://www.tmsf.com/newhouse/property_33_92241652_price.htm", "江干", "330104", "47232"));
+
+        departmentInfoList.add( new DepartmentInfo("玉观邸", "http://www.tmsf.com/newhouse/property_33_16444178_price.htm", "下沙", "330186", "15948"));
+
+        departmentInfoList.add( new DepartmentInfo("百翘星辉名阁", "http://www.tmsf.com/newhouse/property_33_140153398_price.htm", "下沙", "330186", "12534"));
+        departmentInfoList.add( new DepartmentInfo("碧月华庭", "http://www.tmsf.com/newhouse/property_33_231571583_price.htm", "拱墅", "330105", "36524"));
+        
+
         specialParser.correctSoldHouse(departmentInfoList);
 
     }
