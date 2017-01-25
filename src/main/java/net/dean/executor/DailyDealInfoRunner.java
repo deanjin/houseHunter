@@ -10,7 +10,6 @@ import java.util.concurrent.TimeUnit;
 import net.dean.common.FileOP;
 import net.dean.setting.URLConfig;
 import net.dean.watcher.parser.SellCreditParser;
-import net.dean.watcher.parser.SpecialParser;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
@@ -44,7 +43,7 @@ public class DailyDealInfoRunner {
 
                     log.info("schedule run daily deal info in time:{}", localTime);
 
-                    if(localTime.getMinute() < 0 || localTime.getMinute() > 42){
+                    if(localTime.getMinute() < 21 || localTime.getMinute() > 25){
                         return;
                     }
 
@@ -55,7 +54,7 @@ public class DailyDealInfoRunner {
                             dailyDealInfoList = dailyDealParser.run("http://www.tmsf.com/daily.htm");
                         }
 
-                        if (localTime.getHour() == MappingSet.RECORD_HOUR && localTime.getMinute() == 42){
+                        if (localTime.getHour() == MappingSet.RECORD_HOUR && localTime.getMinute() == 21){
                             //爬取剩余库存
                             List<DailyBriefInfo> dailyBriefInfoList = new ArrayList();
                             dailyBriefInfoList = dailyDealParser.parseDailyBriefInfo();
@@ -69,8 +68,8 @@ public class DailyDealInfoRunner {
                             specialInfoRunner.run();
 
                             //爬取新的预售证
-                            SellCreditParser sellCreditParser = new SellCreditParser();
-                            sellCreditParser.run(URLConfig.URL_PREFIX + "/index.jsp");
+                            DepartmentInfoRunner departmentInfoRunner = new DepartmentInfoRunner();
+                            departmentInfoRunner.run();
                         }
 
                     } catch (Exception e) {

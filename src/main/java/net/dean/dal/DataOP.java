@@ -129,7 +129,10 @@ public class DataOP {
             List<HouseInfo> houseInfoList = session.selectList("selectDepartmentForNameAndSellCredit",sellCreditInfo);
             session.commit();
             session.close();
-            return houseInfoList.get(0);
+            if(houseInfoList.size()>0) {
+                return houseInfoList.get(0);
+            }
+            return null;
         }catch(Exception e){
             log.error("when do getHouseInfoByDepartmentName {} catch exception: {}", sellCreditInfo,e);
             FileOP.writeFile("log/daily_error_"+ LocalDate.now().toString(),String.format("when do getHouseInfoByDepartmentName %s catch exception: %s",sellCreditInfo,e));

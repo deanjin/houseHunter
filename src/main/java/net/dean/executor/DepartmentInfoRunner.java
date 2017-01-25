@@ -11,7 +11,7 @@ public class DepartmentInfoRunner {
 
     private final static Logger log = LoggerFactory.getLogger(Runner.class);
 
-    public void run() throws Exception{
+    public static void run() throws Exception{
         DepartmentParser departmentParser = new DepartmentParser();
         departmentParser.run();
     }

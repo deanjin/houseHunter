@@ -63,7 +63,7 @@ public class SpecialInfoRunner {
         departmentInfoList.add( new DepartmentInfo("卓蓝华庭", "http://www.tmsf.com/newhouse/property_33_164427716_price.htm", "江干", "330104", "12491"));
         departmentInfoList.add( new DepartmentInfo("运河宸园", "http://www.tmsf.com/newhouse/property_33_49436919_price.htm", "拱墅", "330105", "27433"));
 
-        departmentInfoList.add( new DepartmentInfo("广厦天都城", "http://www.tmsf.com/newhouse/property_330184_20262405_price.htm", "余杭", "330184", "12491"));
+//        departmentInfoList.add( new DepartmentInfo("广厦天都城", "http://www.tmsf.com/newhouse/property_330184_20262405_price.htm", "余杭", "330184", "12491"));
 
         departmentInfoList.add( new DepartmentInfo("云荷廷", "http://www.tmsf.com/newhouse/property_33_61780345_price.htm", "之江", "330110", "28374"));
 
@@ -91,7 +91,19 @@ public class SpecialInfoRunner {
 
         departmentInfoList.add( new DepartmentInfo("百翘星辉名阁", "http://www.tmsf.com/newhouse/property_33_140153398_price.htm", "下沙", "330186", "12534"));
         departmentInfoList.add( new DepartmentInfo("碧月华庭", "http://www.tmsf.com/newhouse/property_33_231571583_price.htm", "拱墅", "330105", "36524"));
-        
+
+        departmentInfoList.add( new DepartmentInfo("新城香悦奥府", "http://www.tmsf.com/newhouse/property_330181_242385206_price.htm", "萧山", "330181", "24488"));
+
+        departmentInfoList.add( new DepartmentInfo("君宸公寓", "http://www.tmsf.com/newhouse/property_330181_226325424_price.htm", "萧山", "330181", "27207"));
+
+        departmentInfoList.add( new DepartmentInfo("江南之星公寓", "http://www.tmsf.com/newhouse/property_330181_302653066_price.htm", "萧山", "330181", "28536"));
+
+        departmentInfoList.add( new DepartmentInfo("滨盛金茂府", "http://www.tmsf.com/newhouse/property_33_283414761_price.htm", "滨江", "330108", "39138"));
+
+        departmentInfoList.add( new DepartmentInfo("春森俪湾", "http://www.tmsf.com/newhouse/property_33_295846466_price.htm", "西湖", "330106", "21791"));
+
+        departmentInfoList.add( new DepartmentInfo("玖樟公寓", "http://www.tmsf.com/newhouse/property_33_339187325_price.htm", "江干", "330104", "33000"));
+
 
         specialParser.correctSoldHouse(departmentInfoList);
 

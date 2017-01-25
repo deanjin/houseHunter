@@ -65,60 +65,75 @@ public class DepartmentParser {
         /*for(Table.Cell<String, String, String> cell : distinctTable.cellSet()){
             runDistinct(cell);
         }*/
-//        runDepartment("西溪河滨之城","http://www.tmsf.com/newhouse/property_33_64897079_price.htm","西湖区","330106","34000",null);
-//        runDepartment("黄龙金茂悦","http://www.tmsf.com/newhouse/property_33_57411595_price.htm","拱墅","330105","34528",null);
-//        runDepartment("凯德&middot;湖墅观邸","http://www.tmsf.com/newhouse/property_33_93148643_price.htm","拱墅","330105","33566",null);
-//        runDepartment("天峻公寓","http://www.tmsf.com/newhouse/property_330184_81564505_price.htm","余杭","330184","17378",null);
-//        runDepartment("星空公寓","http://www.tmsf.com/newhouse/property_330184_254120984_price.htm","余杭","330184","24538",null);
-//        runDepartment("万科&middot;新都会1958","http://www.tmsf.com/newhouse/property_33_232615031_price.htm","下城","330103","42436",null);
-//        runDepartment("东方星城","http://www.tmsf.com/newhouse/property_33_238384144_price.htm","江干","330104","26876",null);
-//        runDepartment("绿城九龙仓&middot;柳岸晓风", "http://www.tmsf.com/newhouse/property_33_239218542_price.htm", "滨江", "330108", "41484", null);
-//
-//        runDepartment("北大资源未名府","http://www.tmsf.com/newhouse/property_330184_265972817_price.htm","余杭","330184","17081",null);
-//        runDepartment("绿城西子田园牧歌","http://www.tmsf.com/newhouse/property_33_2582_price.htm","拱墅","330105","18442",null);
-//
-//        runDepartment("云杉郡景中心","http://www.tmsf.com/newhouse/property_33_264942875_price.htm","滨江","330108","16677",null);
+        runDepartment("西溪河滨之城","http://www.tmsf.com/newhouse/property_33_64897079_price.htm","西湖区","330106","34000",null);
+        runDepartment("黄龙金茂悦","http://www.tmsf.com/newhouse/property_33_57411595_price.htm","拱墅","330105","34528",null);
+        runDepartment("凯德&middot;湖墅观邸","http://www.tmsf.com/newhouse/property_33_93148643_price.htm","拱墅","330105","33566",null);
+        runDepartment("天峻公寓","http://www.tmsf.com/newhouse/property_330184_81564505_price.htm","余杭","330184","17378",null);
+        runDepartment("星空公寓","http://www.tmsf.com/newhouse/property_330184_254120984_price.htm","余杭","330184","24538",null);
+        runDepartment("万科&middot;新都会1958","http://www.tmsf.com/newhouse/property_33_232615031_price.htm","下城","330103","42436",null);
+        runDepartment("东方星城","http://www.tmsf.com/newhouse/property_33_238384144_price.htm","江干","330104","26876",null);
+        runDepartment("绿城九龙仓&middot;柳岸晓风", "http://www.tmsf.com/newhouse/property_33_239218542_price.htm", "滨江", "330108", "41484", null);
 
-//        runDepartment("九龙仓&middot;珑玺", "http://www.tmsf.com/newhouse/property_33_231599256_price.htm", "拱墅", "330105", "29552", null);
-//        runDepartment("水色宜居", "http://www.tmsf.com/newhouse/property_33_163840737_price.htm", "拱墅", "330105", "33672", null);
-//        runDepartment("孔雀蓝轩", "http://www.tmsf.com/newhouse/property_33_177105285_price.htm", "拱墅", "330105", "26355", null);
-//        runDepartment("学院华庭", "http://www.tmsf.com/newhouse/property_33_101409102_price.htm", "西湖", "330106", "50365", null);
-//        runDepartment("白马湖和院", "http://www.tmsf.com/newhouse/property_33_115301085_price.htm", "滨江", "330108", "17244", null);
-//        runDepartment("滨江&middot;铂金海岸", "http://www.tmsf.com/newhouse/property_33_272625341_price.htm", "江干", "330104", "25407", null);
-//        runDepartment("西溪银泰商业中心", "http://www.tmsf.com/newhouse/property_33_122036672_price.htm", "西湖", "330106", "0", null);
-//        runDepartment("湖漫雅筑", "http://www.tmsf.com/newhouse/property_33_25749011_price.htm", "滨江", "330108", "0", null);
-//        runDepartment("御溪花苑", "http://www.tmsf.com/newhouse/property_33_49559595_price.htm", "西湖", "330106", "0", null);
-//        runDepartment("玉泉二期&middot;香樟洋房", "http://www.tmsf.com/newhouse/property_33_302207316_price.htm", "西湖", "330106", "0", null);
+        runDepartment("北大资源未名府","http://www.tmsf.com/newhouse/property_330184_265972817_price.htm","余杭","330184","17081",null);
+        runDepartment("绿城西子田园牧歌","http://www.tmsf.com/newhouse/property_33_2582_price.htm","拱墅","330105","18442",null);
 
-//        runDepartment("金都艺墅","http://www.tmsf.com/newhouse/property_33_2554_price.htm","之江","330110","21496",null);
-//        runDepartment("运河金麟府","http://www.tmsf.com/newhouse/property_33_240333664_price.htm","拱墅","330105","0",null);
+        runDepartment("云杉郡景中心","http://www.tmsf.com/newhouse/property_33_264942875_price.htm","滨江","330108","16677",null);
 
-//        runDepartment("卓蓝华庭", "http://www.tmsf.com/newhouse/property_33_164427716_price.htm", "江干", "330104", "12491", null);
-//        runDepartment("运河宸园", "http://www.tmsf.com/newhouse/property_33_49436919_price.htm", "拱墅", "330105", "27433", null);
+        runDepartment("九龙仓&middot;珑玺", "http://www.tmsf.com/newhouse/property_33_231599256_price.htm", "拱墅", "330105", "29552", null);
+        runDepartment("水色宜居", "http://www.tmsf.com/newhouse/property_33_163840737_price.htm", "拱墅", "330105", "33672", null);
+        runDepartment("孔雀蓝轩", "http://www.tmsf.com/newhouse/property_33_177105285_price.htm", "拱墅", "330105", "26355", null);
+        runDepartment("学院华庭", "http://www.tmsf.com/newhouse/property_33_101409102_price.htm", "西湖", "330106", "50365", null);
+        runDepartment("白马湖和院", "http://www.tmsf.com/newhouse/property_33_115301085_price.htm", "滨江", "330108", "17244", null);
+        runDepartment("滨江&middot;铂金海岸", "http://www.tmsf.com/newhouse/property_33_272625341_price.htm", "江干", "330104", "25407", null);
+        runDepartment("西溪银泰商业中心", "http://www.tmsf.com/newhouse/property_33_122036672_price.htm", "西湖", "330106", "0", null);
+        runDepartment("湖漫雅筑", "http://www.tmsf.com/newhouse/property_33_25749011_price.htm", "滨江", "330108", "0", null);
+        runDepartment("御溪花苑", "http://www.tmsf.com/newhouse/property_33_49559595_price.htm", "西湖", "330106", "0", null);
+        runDepartment("玉泉二期&middot;香樟洋房", "http://www.tmsf.com/newhouse/property_33_302207316_price.htm", "西湖", "330106", "0", null);
+
+        runDepartment("金都艺墅","http://www.tmsf.com/newhouse/property_33_2554_price.htm","之江","330110","21496",null);
+        runDepartment("运河金麟府","http://www.tmsf.com/newhouse/property_33_240333664_price.htm","拱墅","330105","0",null);
+
+        runDepartment("卓蓝华庭", "http://www.tmsf.com/newhouse/property_33_164427716_price.htm", "江干", "330104", "12491", null);
+        runDepartment("运河宸园", "http://www.tmsf.com/newhouse/property_33_49436919_price.htm", "拱墅", "330105", "27433", null);
 
 //        runDepartment("广厦天都城", "http://www.tmsf.com/newhouse/property_330184_20262405_price.htm", "余杭", "330184", "12491", null);
 
-//          runDepartment("云荷廷", "http://www.tmsf.com/newhouse/property_33_61780345_price.htm", "之江", "330110", "28374", null);
+          runDepartment("云荷廷", "http://www.tmsf.com/newhouse/property_33_61780345_price.htm", "之江", "330110", "28374", null);
 
-//        runDepartment("阳光郡公寓", "http://www.tmsf.com/newhouse/property_33_8911_price.htm", "拱墅", "330105", "19877", null);
-//        runDepartment("紫蝶苑", "http://www.tmsf.com/newhouse/property_33_59170394_price.htm", "西湖", "330106", "23189", null);
-//        runDepartment("万科郡西澜山", "http://www.tmsf.com/newhouse/property_330184_186063736_price.htm", "余杭", "330184", "18219", null);
+        runDepartment("阳光郡公寓", "http://www.tmsf.com/newhouse/property_33_8911_price.htm", "拱墅", "330105", "19877", null);
+        runDepartment("紫蝶苑", "http://www.tmsf.com/newhouse/property_33_59170394_price.htm", "西湖", "330106", "23189", null);
+        runDepartment("万科郡西澜山", "http://www.tmsf.com/newhouse/property_330184_186063736_price.htm", "余杭", "330184", "18219", null);
 
-//        runDepartment("西溪蓝海", "http://www.tmsf.com/newhouse/property_330184_177675733_price.htm", "余杭", "330184", "14792", null);
-//        runDepartment("雍荣华庭", "http://www.tmsf.com/newhouse/property_33_226845036_price.htm", "拱墅", "330105", "27560", null);
+        runDepartment("西溪蓝海", "http://www.tmsf.com/newhouse/property_330184_177675733_price.htm", "余杭", "330184", "14792", null);
+        runDepartment("雍荣华庭", "http://www.tmsf.com/newhouse/property_33_226845036_price.htm", "拱墅", "330105", "27560", null);
 
-//        runDepartment("都会翡翠花苑", "http://www.tmsf.com/newhouse/property_33_235799135_price.htm", "江干", "330104", "33441", null);
-//        runDepartment("运河金麟府", "http://www.tmsf.com/newhouse/property_33_240333664_price.htm", "拱墅", "330105", "37695", null);
-//        runDepartment("映月台公寓", "http://www.tmsf.com/newhouse/property_330184_290596929_price.htm", "余杭", "330184", "22902", null);
-//        runDepartment("溪岸悦府", "http://www.tmsf.com/newhouse/property_330184_166388413_price.htm", "余杭", "330184", "25625", null);
+        runDepartment("都会翡翠花苑", "http://www.tmsf.com/newhouse/property_33_235799135_price.htm", "江干", "330104", "33441", null);
+        runDepartment("运河金麟府", "http://www.tmsf.com/newhouse/property_33_240333664_price.htm", "拱墅", "330105", "37695", null);
+        runDepartment("映月台公寓", "http://www.tmsf.com/newhouse/property_330184_290596929_price.htm", "余杭", "330184", "22902", null);
+        runDepartment("溪岸悦府", "http://www.tmsf.com/newhouse/property_330184_166388413_price.htm", "余杭", "330184", "25625", null);
 
-//        runDepartment("萍实公寓", "http://pay.tmsf.com/newhouse/property_33_78158625_price.htm", "拱墅", "330105", "30976", null);
-//        runDepartment("滨江&middot;锦绣之城", "http://www.tmsf.com/newhouse/property_33_290876212_price.htm", "拱墅", "330105", "44585", null);
-//        runDepartment("阳光城&middot;文澜府", "http://www.tmsf.com/newhouse/property_33_238789032_price.htm", "拱墅", "330105", "32057", null);
-//        runDepartment("海域晶华公寓", "http://www.tmsf.com/newhouse/property_33_92241652_price.htm", "江干", "330104", "47232",null);
-//        runDepartment("玉观邸", "http://www.tmsf.com/newhouse/property_33_16444178_price.htm", "下沙", "330186", "15948",null);
-//        runDepartment("百翘星辉名阁", "http://www.tmsf.com/newhouse/property_33_140153398_price.htm", "下沙", "330186", "12534",null);
-//        runDepartment("碧月华庭", "http://www.tmsf.com/newhouse/property_33_231571583_price.htm", "拱墅", "330105", "36524",null);
+        runDepartment("萍实公寓", "http://pay.tmsf.com/newhouse/property_33_78158625_price.htm", "拱墅", "330105", "30976", null);
+        runDepartment("滨江&middot;锦绣之城", "http://www.tmsf.com/newhouse/property_33_290876212_price.htm", "拱墅", "330105", "44585", null);
+        runDepartment("阳光城&middot;文澜府", "http://www.tmsf.com/newhouse/property_33_238789032_price.htm", "拱墅", "330105", "32057", null);
+        runDepartment("海域晶华公寓", "http://www.tmsf.com/newhouse/property_33_92241652_price.htm", "江干", "330104", "47232",null);
+        runDepartment("玉观邸", "http://www.tmsf.com/newhouse/property_33_16444178_price.htm", "下沙", "330186", "15948",null);
+        runDepartment("百翘星辉名阁", "http://www.tmsf.com/newhouse/property_33_140153398_price.htm", "下沙", "330186", "12534",null);
+        runDepartment("碧月华庭", "http://www.tmsf.com/newhouse/property_33_231571583_price.htm", "拱墅", "330105", "36524",null);
+
+
+        runDepartment( "新城香悦奥府", "http://www.tmsf.com/newhouse/property_330181_242385206_price.htm", "萧山", "330181", "24488", null);
+
+        runDepartment( "君宸公寓", "http://www.tmsf.com/newhouse/property_330181_226325424_price.htm", "萧山", "330181", "27207", null);
+
+        runDepartment( "江南之星公寓", "http://www.tmsf.com/newhouse/property_330181_302653066_price.htm", "萧山", "330181", "28536", null);
+
+        runDepartment( "滨盛金茂府", "http://www.tmsf.com/newhouse/property_33_283414761_price.htm", "滨江", "330108", "39138", null);
+
+        runDepartment("春森俪湾", "http://www.tmsf.com/newhouse/property_33_295846466_price.htm", "西湖", "330106", "21791",null);
+
+        runDepartment("玖樟公寓", "http://www.tmsf.com/newhouse/property_33_339187325_price.htm", "江干", "330104", "33000",null);
+
+
 
     }
 

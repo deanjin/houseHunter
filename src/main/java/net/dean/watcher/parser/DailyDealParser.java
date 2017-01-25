@@ -58,45 +58,49 @@ public class DailyDealParser {
     private final DataOP dataOP = new DataOP();
     private final HouseParser houseParser = new HouseParser();
     private final static Set<String> needParseDepartmentSet = ImmutableSet.of(
-//            "凯德&middot;湖墅观邸",
-//            "黄龙金茂悦",
-            "西溪河滨之城"
-//            "天峻公寓",
-//            "星空公寓",
-//            "万科&middot;新都会1958",
-//            "东方星城",
-//        "北大资源未名府",
-//        "绿城西子田园牧歌",
+            "凯德&middot;湖墅观邸",
+            "黄龙金茂悦",
+            "西溪河滨之城",
+            "天峻公寓",
+            "星空公寓",
+            "万科&middot;新都会1958",
+            "东方星城",
+        "北大资源未名府",
+        "绿城西子田园牧歌",
 //            "云杉郡景中心",
-//            "国风美域公寓",
-//            "绿城九龙仓&middot;柳岸晓风",
-//            "九龙仓&middot;珑玺",
-//            "水色宜居",
-//            "孔雀蓝轩",
-//            "学院华庭",
-//            "金都艺墅",
-//            "滨江&middot;铂金海岸",
-//            "卓蓝华庭",
-//            "云荷廷",
-//            "阳光郡公寓",
-//            "万科郡西澜山",
-//            "紫蝶苑",
-//            "西溪蓝海",
-//            "雍荣华庭",
-//            "都会翡翠花苑",
-//            "运河金麟府",
-//            "映月台公寓",
-//            "溪岸悦府",
-//            "萍实公寓",
-//            "滨江&middot;锦绣之城",
-//            "阳光城&middot;文澜府",
-//            "海域晶华公寓",
-//            "玉观邸",
-//            "百翘星辉名阁",
-//            "碧月华庭");
-//            "白马湖和院");
-    );
-
+            "国风美域公寓",
+            "绿城九龙仓&middot;柳岸晓风",
+            "九龙仓&middot;珑玺",
+            "水色宜居",
+            "孔雀蓝轩",
+            "学院华庭",
+            "金都艺墅",
+            "滨江&middot;铂金海岸",
+            "卓蓝华庭",
+            "云荷廷",
+            "阳光郡公寓",
+            "万科郡西澜山",
+            "紫蝶苑",
+            "西溪蓝海",
+            "雍荣华庭",
+            "都会翡翠花苑",
+            "运河金麟府",
+            "映月台公寓",
+            "溪岸悦府",
+            "萍实公寓",
+            "滨江&middot;锦绣之城",
+            "阳光城&middot;文澜府",
+            "海域晶华公寓",
+            "玉观邸",
+            "百翘星辉名阁",
+            "碧月华庭",
+            "新城香悦奥府",
+            "君宸公寓",
+            "江南之星公寓",
+            "春森俪湾",
+            "玖樟公寓",
+            "滨盛金茂府");
+            //"白马湖和院");
 
     public static void main(String[] args) {
         DailyDealParser dailyDealParser = new DailyDealParser();
@@ -273,7 +277,6 @@ public class DailyDealParser {
                             / w.getDealArea());
                 });
 
-
         try {
             FileOP.writeFile("log/dailyDealInfo", String.valueOf(new Date()), dailyDealInfoList);
         } catch (Exception e) {
@@ -292,7 +295,7 @@ public class DailyDealParser {
 //                                countDownLatch.countDown();
 //                            });
 //                    thread.start();
-//                    findSellHouse(dailyDealInfo);
+                    findSellHouse(dailyDealInfo);
                 }catch(Exception e){
                     isParseOK = false;
                     FileOP.writeFile("log/daily_error_"+LocalDate.now().toString(),

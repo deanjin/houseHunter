@@ -56,7 +56,7 @@
             </select>
 
             <select id="selectMinDealPercent" parameterType="String" resultType="java.lang.Double">
-                SELECT max(deal_percent) from house_info where department_name = #{value} and status = '已售' and deal_date > date_sub(now(), interval 10 day)
+                SELECT max(deal_percent) from house_info where department_name = #{value} and status = '已售' and deal_date > date_sub(now(), interval 40 day)
             </select>
 
             <select id="updateHouseDealInfo" parameterType="houseInfo">

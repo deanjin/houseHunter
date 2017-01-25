@@ -3,14 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="7c181b11-0e29-4365-bbf1-26eac5bc696e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/dean/common/MappingSet.java" afterPath="$PROJECT_DIR$/src/main/java/net/dean/common/MappingSet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/mapper/houseInfoMapper.xml" afterPath="$PROJECT_DIR$/src/config/mapper/houseInfoMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/dean/common/CommonHttpURLConnection.java" afterPath="$PROJECT_DIR$/src/main/java/net/dean/common/CommonHttpURLConnection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/dean/dal/DataOP.java" afterPath="$PROJECT_DIR$/src/main/java/net/dean/dal/DataOP.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/dean/executor/DailyDealInfoRunner.java" afterPath="$PROJECT_DIR$/src/main/java/net/dean/executor/DailyDealInfoRunner.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/dean/executor/DepartmentInfoRunner.java" afterPath="$PROJECT_DIR$/src/main/java/net/dean/executor/DepartmentInfoRunner.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/dean/executor/SpecialInfoRunner.java" afterPath="$PROJECT_DIR$/src/main/java/net/dean/executor/SpecialInfoRunner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/dean/test/Test.java" afterPath="$PROJECT_DIR$/src/main/java/net/dean/test/Test.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DailyDealParser.java" afterPath="$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DailyDealParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DepartmentParser.java" afterPath="$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DepartmentParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/HouseParser.java" afterPath="$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/HouseParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/SpecialParser.java" afterPath="$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/SpecialParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/watcher.iml" afterPath="$PROJECT_DIR$/watcher.iml" />
     </list>
     <ignored path="watcher.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,20 +41,28 @@
       <file leaf-file-name="DailyDealParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DailyDealParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="759">
-              <caret line="309" column="20" selection-start-line="309" selection-start-column="11" selection-end-line="309" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="390">
+              <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SpecialInfoRunner.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HouseParser.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/HouseParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpecialInfoRunner.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/executor/SpecialInfoRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="93" column="8" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="8" />
+            <state relative-caret-position="48">
+              <caret line="85" column="42" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -61,38 +71,43 @@
       <file leaf-file-name="SpecialParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/SpecialParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1380">
-              <caret line="105" column="13" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="13" />
+            <state relative-caret-position="144">
+              <caret line="89" column="59" selection-start-line="89" selection-start-column="56" selection-end-line="89" selection-end-column="59" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="daily_deal_info_detail_es" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/log/daily_deal_info_detail_es">
+      <file leaf-file-name="houseInfoMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config/mapper/houseInfoMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1919">
-              <caret line="2544" column="37" selection-start-line="2544" selection-start-column="37" selection-end-line="2544" selection-end-column="37" />
-              <folding />
+            <state relative-caret-position="-138">
+              <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
+              <folding>
+                <marker date="1477671219000" expanded="true" signature="2368:2878" ph="INSERT INTO house_info... " />
+                <marker date="1477671219000" expanded="true" signature="3013:3084" ph="SELECT * fro... house_info" />
+                <marker date="1477671219000" expanded="true" signature="3240:3340" ph="SELECT * fro... house_info" />
+                <marker date="1477671219000" expanded="true" signature="3476:3551" ph="SELECT * fro... house_info" />
+                <marker date="1477671219000" expanded="true" signature="3685:3760" ph="SELECT * fro... house_info" />
+                <marker date="1477671219000" expanded="true" signature="3899:3974" ph="SELECT * fro... house_info" />
+                <marker date="1477671219000" expanded="true" signature="4107:4176" ph="SELECT * fro... house_info" />
+                <marker date="1477671219000" expanded="true" signature="4316:4456" ph="SELECT min(d... house_info" />
+                <marker date="1477671219000" expanded="true" signature="4568:4689" ph="UPDATE house... " />
+                <marker date="1477671219000" expanded="true" signature="4811:4878" ph="UPDATE house... " />
+                <marker date="1477671219000" expanded="true" signature="4997:5064" ph="UPDATE house... " />
+                <marker date="1477671219000" expanded="true" signature="5194:5251" ph="SELECT * fro... house_info" />
+                <marker date="1477671219000" expanded="true" signature="5366:5426" ph="UPDATE house... " />
+                <marker date="1477671219000" expanded="true" signature="5522:5582" ph="UPDATE house... " />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HouseParser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/HouseParser.java">
+      <file leaf-file-name="Runner.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/executor/Runner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="429" column="75" selection-start-line="429" selection-start-column="75" selection-end-line="429" selection-end-column="75" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dailyDealInfo_current_sell" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/log/dailyDealInfo_current_sell">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="417" column="2" selection-start-line="417" selection-start-column="2" selection-end-line="417" selection-end-column="2" />
+            <state relative-caret-position="210">
+              <caret line="15" column="32" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -101,19 +116,11 @@
       <file leaf-file-name="DailyDealInfoRunner.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/executor/DailyDealInfoRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="68" column="49" selection-start-line="68" selection-start-column="46" selection-end-line="68" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MappingSet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/common/MappingSet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
-              <folding />
+            <state relative-caret-position="180">
+              <caret line="71" column="52" selection-start-line="71" selection-start-column="49" selection-end-line="71" selection-end-column="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -121,18 +128,28 @@
       <file leaf-file-name="DepartmentInfoRunner.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/executor/DepartmentInfoRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+            <state relative-caret-position="195">
+              <caret line="15" column="28" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dailyDealInfo" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/log/dailyDealInfo">
+      <file leaf-file-name="DepartmentParser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DepartmentParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="241" column="2486" selection-start-line="225" selection-start-column="17353" selection-end-line="225" selection-end-column="17357" />
+            <state relative-caret-position="540">
+              <caret line="131" column="38" selection-start-line="131" selection-start-column="38" selection-end-line="131" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SellCreditInfoRunner.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/executor/SellCreditInfoRunner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="38" column="87" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="87" />
               <folding />
             </state>
           </provider>
@@ -164,7 +181,6 @@
         <option value="$PROJECT_DIR$/src/config/mapper/sellCreditInfoMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/net/dean/object/SellCreditInfo.java" />
         <option value="$PROJECT_DIR$/log/dailyDealInfo_parse_error" />
-        <option value="$PROJECT_DIR$/src/main/java/net/dean/executor/DepartmentInfoRunner.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/net/dean/object/StateInfo.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/dean/object/HouseStateInfo.java" />
@@ -186,7 +202,6 @@
         <option value="$PROJECT_DIR$/src/main/java/net/dean/common/ESOP.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/dean/executor/SellCreditInfoRunner.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/dean/calculator/IndexCalculator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/dean/common/CommonHttpURLConnection.java" />
         <option value="$PROJECT_DIR$/src/config/mapper/dailyDealInfoMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/net/dean/object/DailyDealInfo.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/dean/common/FileOP.java" />
@@ -197,18 +212,20 @@
         <option value="$PROJECT_DIR$/src/main/java/net/dean/test/SpecialParserTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/dean/test/SellCreditParserTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/SellCreditParser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/dean/dal/DataOP.java" />
-        <option value="$PROJECT_DIR$/src/config/mapper/houseInfoMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/HouseParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/dean/test/Test.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DepartmentParser.java" />
         <option value="$PROJECT_DIR$/log/dailyDealInfo_current_sell" />
         <option value="$PROJECT_DIR$/log/daily_deal_info_detail_es" />
-        <option value="$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DailyDealParser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/dean/common/MappingSet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/dean/executor/DailyDealInfoRunner.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/SpecialParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/dean/common/CommonHttpURLConnection.java" />
+        <option value="$PROJECT_DIR$/src/config/mapper/houseInfoMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/net/dean/common/MappingSet.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/dean/executor/SpecialInfoRunner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DailyDealParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/dean/dal/DataOP.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DepartmentParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/dean/executor/DailyDealInfoRunner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/dean/executor/DepartmentInfoRunner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/HouseParser.java" />
       </list>
     </option>
   </component>
@@ -234,6 +251,80 @@
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="773" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Android Lint</id>
+          </State>
+          <State>
+            <id>Code style issuesJava</id>
+          </State>
+          <State>
+            <id>Compiler issuesJava</id>
+          </State>
+          <State>
+            <id>Finalization issuesJava</id>
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>Groovy</id>
+          </State>
+          <State>
+            <id>Inheritance issuesJava</id>
+          </State>
+          <State>
+            <id>J2ME issuesJava</id>
+          </State>
+          <State>
+            <id>JSP Inspections</id>
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>Java language level migration aidsJava</id>
+          </State>
+          <State>
+            <id>JavaBeans issuesJava</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>Kotlin</id>
+          </State>
+          <State>
+            <id>Numeric issuesJava</id>
+          </State>
+          <State>
+            <id>OtherGroovy</id>
+          </State>
+          <State>
+            <id>Performance issuesJava</id>
+          </State>
+          <State>
+            <id>Probable bugsJava</id>
+          </State>
+          <State>
+            <id>Security issuesJava</id>
+          </State>
+          <State>
+            <id>Serialization issuesJava</id>
+          </State>
+          <State>
+            <id>Verbose or redundant code constructsJava</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -324,6 +415,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -347,6 +442,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -376,6 +475,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -395,6 +498,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -424,6 +531,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -447,6 +558,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="watcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="houseHunter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -518,21 +663,21 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/JavaTest" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="SearchEverywhereHistoryKey" value="CommonHtt&#9;FILE&#9;file:///Users/dean/houseHunter/src/main/java/net/dean/common/CommonHttpURLConnection.java" />
+    <property name="SearchEverywhereHistoryKey" value="data&#9;FILE&#9;file:///Users/dean/houseHunter/src/main/java/net/dean/dal/DataOP.java&#10;CommonHtt&#9;FILE&#9;file:///Users/dean/houseHunter/src/main/java/net/dean/common/CommonHttpURLConnection.java" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -1099,16 +1244,25 @@
       <workItem from="1471224058268" duration="20816000" />
       <workItem from="1471753190983" duration="45629000" />
       <workItem from="1473223653126" duration="24554000" />
-      <workItem from="1473918719111" duration="24386000" />
+      <workItem from="1473918719111" duration="27089000" />
+      <workItem from="1474332552599" duration="24273000" />
+      <workItem from="1475854747892" duration="3609000" />
+      <workItem from="1477669653709" duration="6460000" />
+      <workItem from="1478654491883" duration="1333000" />
+      <workItem from="1478794335066" duration="5957000" />
+      <workItem from="1479654676996" duration="2063000" />
+      <workItem from="1481462564722" duration="2833000" />
+      <workItem from="1481733233124" duration="24821000" />
+      <workItem from="1485002513316" duration="4280000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="423871000" />
+    <option name="totallyTimeSpent" value="502203000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1118,11 +1272,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35976505" sideWeight="0.503231" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36563876" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35976505" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1914378" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19063005" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17285945" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37591776" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1133,7 +1288,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17285945" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1186,7 +1340,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DailyDealParser.java</url>
-          <line>370</line>
+          <line>373</line>
           <properties />
           <option name="timeStamp" value="146" />
         </line-breakpoint>
@@ -1198,13 +1352,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DailyDealParser.java</url>
-          <line>314</line>
+          <line>317</line>
           <properties />
           <option name="timeStamp" value="254" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DailyDealParser.java</url>
-          <line>329</line>
+          <line>332</line>
           <properties />
           <option name="timeStamp" value="257" />
         </line-breakpoint>
@@ -1222,37 +1376,37 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DepartmentParser.java</url>
-          <line>237</line>
+          <line>252</line>
           <properties />
           <option name="timeStamp" value="267" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DepartmentParser.java</url>
-          <line>275</line>
+          <line>290</line>
           <properties />
           <option name="timeStamp" value="268" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DepartmentParser.java</url>
-          <line>311</line>
+          <line>326</line>
           <properties />
           <option name="timeStamp" value="274" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DailyDealParser.java</url>
-          <line>311</line>
+          <line>314</line>
           <properties />
           <option name="timeStamp" value="283" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DailyDealParser.java</url>
-          <line>250</line>
+          <line>254</line>
           <properties />
           <option name="timeStamp" value="284" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DailyDealParser.java</url>
-          <line>121</line>
+          <line>125</line>
           <properties />
           <option name="timeStamp" value="286" />
         </line-breakpoint>
@@ -1264,7 +1418,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DailyDealParser.java</url>
-          <line>215</line>
+          <line>219</line>
           <properties />
           <option name="timeStamp" value="297" />
         </line-breakpoint>
@@ -1288,15 +1442,33 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/SpecialParser.java</url>
-          <line>90</line>
+          <line>94</line>
           <properties />
-          <option name="timeStamp" value="308" />
+          <option name="timeStamp" value="315" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DailyDealParser.java</url>
+          <line>232</line>
+          <properties />
+          <option name="timeStamp" value="316" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DailyDealParser.java</url>
+          <line>286</line>
+          <properties />
+          <option name="timeStamp" value="317" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DepartmentParser.java</url>
+          <line>86</line>
+          <properties />
+          <option name="timeStamp" value="319" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="309" />
+      <option name="time" value="320" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1305,71 +1477,13 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/log/daily_error_2016-08-22" />
-    <entry file="file://$PROJECT_DIR$/log/daily_error_2016-08-23" />
-    <entry file="file://$PROJECT_DIR$/log/daily_deal_info_brief_es">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="8413" column="212" selection-start-line="8413" selection-start-column="212" selection-end-line="8413" selection-end-column="212" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/daily_error_2016-08-26" />
-    <entry file="file://$PROJECT_DIR$/src/config/mapper/sellCreditInfoMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/mapper/dailyDealInfoMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
-          <folding>
-            <marker date="1471961492000" expanded="true" signature="2072:2365" ph="INSERT INTO daily_deal_info... " />
-            <marker date="1471961492000" expanded="true" signature="2513:2722" ph="SELECT * FRO... daily_deal_info" />
-            <marker date="1471961492000" expanded="true" signature="2637:2720" ph="SELECT MAX(p... daily_deal_info" />
-            <marker date="1471961492000" expanded="true" signature="2840:3048" ph="INSERT INTO daily_brief_info... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/object/DailyDealInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
-          <folding>
-            <element signature="e#1025#1026#0" expanded="false" />
-            <element signature="e#1056#1057#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/log/dailyDealInfo_parse_diff" />
     <entry file="file://$PROJECT_DIR$/log/dailyDealInfo_parse_again" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/common/FileOP.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/log/dailyDealInfo_parse_error" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar!/org/slf4j/Logger.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
           <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/object/DailyBriefInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1395,66 +1509,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/common/CommonHttpURLConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/dal/DataOP.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="239" column="44" selection-start-line="239" selection-start-column="19" selection-end-line="239" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/mapper/houseInfoMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="58" column="31" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
-          <folding>
-            <marker date="1473611301000" expanded="true" signature="2368:2878" ph="INSERT INTO house_info... " />
-            <marker date="1473611301000" expanded="true" signature="3013:3084" ph="SELECT * fro... house_info" />
-            <marker date="1473611301000" expanded="true" signature="3240:3340" ph="SELECT * fro... house_info" />
-            <marker date="1473611301000" expanded="true" signature="3476:3551" ph="SELECT * fro... house_info" />
-            <marker date="1473611301000" expanded="true" signature="3685:3760" ph="SELECT * fro... house_info" />
-            <marker date="1473611301000" expanded="true" signature="3899:3974" ph="SELECT * fro... house_info" />
-            <marker date="1473611301000" expanded="true" signature="4107:4176" ph="SELECT * fro... house_info" />
-            <marker date="1473611301000" expanded="true" signature="4316:4456" ph="SELECT min(d... house_info" />
-            <marker date="1473611301000" expanded="true" signature="4568:4689" ph="UPDATE house... " />
-            <marker date="1473611301000" expanded="true" signature="4811:4878" ph="UPDATE house... " />
-            <marker date="1473611301000" expanded="true" signature="4997:5064" ph="UPDATE house... " />
-            <marker date="1473611301000" expanded="true" signature="5194:5251" ph="SELECT * fro... house_info" />
-            <marker date="1473611301000" expanded="true" signature="5366:5426" ph="UPDATE house... " />
-            <marker date="1473611301000" expanded="true" signature="5522:5582" ph="UPDATE house... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/log/daily_error_2016-09-11">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-811">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/calculator/IndexCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9">
-          <caret line="59" column="16" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/common/AssistantOP.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39">
-          <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1462,7 +1520,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6795">
           <caret line="453" column="0" selection-start-line="453" selection-start-column="0" selection-end-line="453" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1470,7 +1527,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1215">
           <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1486,23 +1542,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-756">
           <caret line="289" column="24" selection-start-line="289" selection-start-column="24" selection-end-line="289" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/log/dailyDealInfo_parse_current_house_error">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1051">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/log/dailyDealInfo_parse_current_house_error" />
     <entry file="file://$PROJECT_DIR$/log/dailyDealInfo_parse">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="449">
           <caret line="497" column="25" selection-start-line="497" selection-start-column="25" selection-end-line="497" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1510,14 +1557,166 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/dailyDealInfo_hour_deal">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/dailyDealInfo_hour_match">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/dailyDealInfo_hour_calculation">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="129" column="33" selection-start-line="129" selection-start-column="33" selection-end-line="129" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/dailyDealInfo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="241" column="2486" selection-start-line="225" selection-start-column="17353" selection-end-line="225" selection-end-column="17357" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/dailyDealInfo_current_sell">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="417" column="2" selection-start-line="417" selection-start-column="2" selection-end-line="417" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/mapper/dailyDealInfoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+          <folding>
+            <marker date="1471961492000" expanded="true" signature="2072:2365" ph="INSERT INTO daily_deal_info... " />
+            <marker date="1471961492000" expanded="true" signature="2513:2722" ph="SELECT * FRO... daily_deal_info" />
+            <marker date="1471961492000" expanded="true" signature="2637:2720" ph="SELECT MAX(p... daily_deal_info" />
+            <marker date="1471961492000" expanded="true" signature="2840:3048" ph="INSERT INTO daily_brief_info... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/test/SellCreditParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar!/org/slf4j/LoggerFactory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/calculator/IndexCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2340">
+          <caret line="176" column="37" selection-start-line="176" selection-start-column="37" selection-end-line="176" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/object/DailyBriefInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/object/DailyDealInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
+          <folding>
+            <element signature="e#1025#1026#0" expanded="false" />
+            <element signature="e#1056#1057#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/object/DepartmentInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1305">
+          <caret line="132" column="109" selection-start-line="132" selection-start-column="109" selection-end-line="132" selection-end-column="109" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/SellCreditParser.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/object/HouseInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-976">
-          <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
+        <state relative-caret-position="105">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/common/Validator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/common/FileOP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/common/ESOP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/common/CommonHttpURLConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/common/AssistantOP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-237">
+          <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/object/HouseStateInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-42">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/object/SellCreditInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1530,51 +1729,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/test/SellCreditParserTest.java">
+    <entry file="file://$PROJECT_DIR$/log/daily_deal_info_detail_es">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+        <state relative-caret-position="50610">
+          <caret line="3478" column="26" selection-start-line="3478" selection-start-column="26" selection-end-line="3478" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/object/SellCreditInfo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/common/MappingSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-61">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        <state relative-caret-position="285">
+          <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#629#630#0" expanded="false" />
+            <element signature="e#682#683#0" expanded="false" />
+            <element signature="e#761#777#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/SellCreditParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="131" column="22" selection-start-line="131" selection-start-column="22" selection-end-line="131" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/executor/SellCreditInfoRunner.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/dal/DataOP.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="38" column="87" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="87" />
+        <state relative-caret-position="132">
+          <caret line="125" column="21" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/log/dailyDealInfo_hour_deal">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DailyDealParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state relative-caret-position="390">
+          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/log/dailyDealInfo_hour_match">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/executor/DailyDealInfoRunner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/dailyDealInfo_hour_calculation">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="129" column="33" selection-start-line="129" selection-start-column="33" selection-end-line="129" selection-end-column="33" />
-          <folding />
+        <state relative-caret-position="180">
+          <caret line="71" column="52" selection-start-line="71" selection-start-column="49" selection-end-line="71" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1586,100 +1792,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/object/DepartmentInfo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/executor/DepartmentInfoRunner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="132" column="109" selection-start-line="132" selection-start-column="109" selection-end-line="132" selection-end-column="109" />
+        <state relative-caret-position="195">
+          <caret line="15" column="28" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DepartmentParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+        <state relative-caret-position="540">
+          <caret line="131" column="38" selection-start-line="131" selection-start-column="38" selection-end-line="131" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/log/dailyDealInfo">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/executor/SellCreditInfoRunner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="241" column="2486" selection-start-line="225" selection-start-column="17353" selection-end-line="225" selection-end-column="17357" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/dailyDealInfo_current_sell">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="417" column="2" selection-start-line="417" selection-start-column="2" selection-end-line="417" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/daily_deal_info_detail_es">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1919">
-          <caret line="2544" column="37" selection-start-line="2544" selection-start-column="37" selection-end-line="2544" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/HouseParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="429" column="75" selection-start-line="429" selection-start-column="75" selection-end-line="429" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/executor/DepartmentInfoRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/DailyDealParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="309" column="20" selection-start-line="309" selection-start-column="11" selection-end-line="309" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/common/MappingSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/executor/DailyDealInfoRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="68" column="49" selection-start-line="68" selection-start-column="46" selection-end-line="68" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/SpecialParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1380">
-          <caret line="105" column="13" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="13" />
+        <state relative-caret-position="378">
+          <caret line="38" column="87" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="87" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/executor/SpecialInfoRunner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="93" column="8" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="8" />
+        <state relative-caret-position="48">
+          <caret line="85" column="42" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/mapper/houseInfoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-138">
+          <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
+          <folding>
+            <marker date="1477671219000" expanded="true" signature="2368:2878" ph="INSERT INTO house_info... " />
+            <marker date="1477671219000" expanded="true" signature="3013:3084" ph="SELECT * fro... house_info" />
+            <marker date="1477671219000" expanded="true" signature="3240:3340" ph="SELECT * fro... house_info" />
+            <marker date="1477671219000" expanded="true" signature="3476:3551" ph="SELECT * fro... house_info" />
+            <marker date="1477671219000" expanded="true" signature="3685:3760" ph="SELECT * fro... house_info" />
+            <marker date="1477671219000" expanded="true" signature="3899:3974" ph="SELECT * fro... house_info" />
+            <marker date="1477671219000" expanded="true" signature="4107:4176" ph="SELECT * fro... house_info" />
+            <marker date="1477671219000" expanded="true" signature="4316:4456" ph="SELECT min(d... house_info" />
+            <marker date="1477671219000" expanded="true" signature="4568:4689" ph="UPDATE house... " />
+            <marker date="1477671219000" expanded="true" signature="4811:4878" ph="UPDATE house... " />
+            <marker date="1477671219000" expanded="true" signature="4997:5064" ph="UPDATE house... " />
+            <marker date="1477671219000" expanded="true" signature="5194:5251" ph="SELECT * fro... house_info" />
+            <marker date="1477671219000" expanded="true" signature="5366:5426" ph="UPDATE house... " />
+            <marker date="1477671219000" expanded="true" signature="5522:5582" ph="UPDATE house... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/SpecialParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="89" column="59" selection-start-line="89" selection-start-column="56" selection-end-line="89" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/dean/watcher/parser/HouseParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding />
         </state>
       </provider>

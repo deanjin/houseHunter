@@ -14,6 +14,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.hash.Hashing;
 import net.dean.common.CommonHttpURLConnection;
+import net.dean.object.SellCreditInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.htmlparser.Node;
 import org.htmlparser.NodeFilter;
@@ -56,12 +57,21 @@ public class HouseParser {
             try {
                 log.info("begin to parse house info for department:{}", departmentInfo);
 
+
                 //爬取所有的预售证
                 Map<String, String> sellCreditMap = parseAllSellCredit(departmentInfo);
                 ExecutorService executorService = Executors.newFixedThreadPool(sellCreditMap.size());
                 final CountDownLatch countDownLatch = new CountDownLatch(sellCreditMap.size());
                 for (Map.Entry<String, String> sellCredit : sellCreditMap.entrySet()) {
 
+//                    SellCreditInfo sellCreditInfo = new SellCreditInfo();
+//                    sellCreditInfo.setName(departmentInfo.getName());
+//                    sellCreditInfo.setSellCredit(sellCredit.getValue());
+//                    HouseInfo houseInfo = dataOP.getHouseInfoByDepartmentNameAndSellCredit(sellCreditInfo);
+//                    if(houseInfo != null){
+//                        countDownLatch.countDown();
+//                        continue;
+//                    }
                     executorService.execute(() -> {
                         try {
                             parseSellCredit(
